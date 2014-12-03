@@ -29,9 +29,18 @@ au Filetype go nnoremap <leader>g :tab split <CR>:exe "GoDef"<CR>
 " php syntax
 NeoBundle 'StanAngeloff/php.vim'
 
+" php fixer
+NeoBundle "stephpy/vim-php-cs-fixer"
+let g:php_cs_fixer_level = "psr2"
+"autocmd FileType php autocmd BufWritePre <buffer> Fmt
+
 " tag sidebar
-NeoBundle 'taglist.vim'
-nnoremap <leader>t :TlistToggle<CR>
+"NeoBundle 'taglist.vim'
+"nnoremap <leader>t :TlistToggle<CR>
+
+" try majutsushi/tagbar
+NeoBundle "majutsushi/tagbar"
+nnoremap <leader>t :TagbarToggle<CR>
 
 " file sidebar
 NeoBundle 'scrooloose/nerdtree'
@@ -39,6 +48,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 
 " syntax checker
 NeoBundle 'scrooloose/syntastic'
+let g:syntastic_php_phpcs_args = "--standard=PSR2"
 
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -58,3 +68,14 @@ set number
 " Highlite search
 set hlsearch
 
+" slightly bigger font
+set guifont=Menlo\ Regular:h14
+
+" Use spaces for tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" move the backup and swap directories
+set backupdir=~/.vim/backup,.,/tmp
+set directory=~/.vim/backup,.,/tmp
