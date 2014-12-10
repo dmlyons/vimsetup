@@ -1,4 +1,4 @@
-" https://github.com/Shougo/neobundle.vim
+" follow install directions at: https://github.com/Shougo/neobundle.vim
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -21,6 +21,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 " Add or remove your Bundles here:
 
+" golang
 NeoBundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
@@ -32,11 +33,6 @@ NeoBundle 'StanAngeloff/php.vim'
 " php fixer
 NeoBundle "stephpy/vim-php-cs-fixer"
 let g:php_cs_fixer_level = "psr2"
-"autocmd FileType php autocmd BufWritePre <buffer> Fmt
-
-" tag sidebar
-"NeoBundle 'taglist.vim'
-"nnoremap <leader>t :TlistToggle<CR>
 
 " try majutsushi/tagbar
 NeoBundle "majutsushi/tagbar"
