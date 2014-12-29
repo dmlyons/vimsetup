@@ -80,3 +80,10 @@ set expandtab
 " move the backup and swap directories
 set backupdir=~/.vim/backup,.,/tmp
 set directory=~/.vim/backup,.,/tmp
+
+" always show the status line
+set laststatus=2
+
+" highlight the current column and line of the cursor
+set cursorcolumn
+set cursorline
