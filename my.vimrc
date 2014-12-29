@@ -27,8 +27,10 @@ let g:go_fmt_command = "goimports"
 au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au Filetype go nnoremap <leader>g :tab split <CR>:exe "GoDef"<CR>
 
-" Git integration
+" Git integration, autodelete hidden fugitive buffers
 NeoBundle 'tpope/vim-fugitive'
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " php syntax
 NeoBundle 'StanAngeloff/php.vim'
