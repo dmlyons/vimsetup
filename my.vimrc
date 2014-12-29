@@ -27,6 +27,9 @@ let g:go_fmt_command = "goimports"
 au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au Filetype go nnoremap <leader>g :tab split <CR>:exe "GoDef"<CR>
 
+" Git integration
+NeoBundle 'tpope/vim-fugitive'
+
 " php syntax
 NeoBundle 'StanAngeloff/php.vim'
 
