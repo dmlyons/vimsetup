@@ -32,7 +32,10 @@ NeoBundle 'tpope/vim-fugitive'
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" php syntax
+" surround
+NeoBundle "tpope/vim-surround"
+
+" php syntax highlighting
 NeoBundle 'StanAngeloff/php.vim'
 
 " php fixer
@@ -42,6 +45,33 @@ let g:php_cs_fixer_level = "psr2"
 " try majutsushi/tagbar
 NeoBundle "majutsushi/tagbar"
 nnoremap <leader>t :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 " file sidebar
 NeoBundle 'scrooloose/nerdtree'
