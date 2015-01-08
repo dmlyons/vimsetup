@@ -42,6 +42,12 @@ NeoBundle 'StanAngeloff/php.vim'
 NeoBundle "stephpy/vim-php-cs-fixer"
 let g:php_cs_fixer_level = "psr2"
 
+" better php ctags support?
+"NeoBundle "vim-php/tagbar-phpctags.vim"
+NeoBundle "tagbar-phpctags"
+"let g:tagbar_phpctags_bin='$HOME/.vim/bundle/tagbar-phpctags/bin'
+let g:tagbar_phpctags_memory_limit = '512M'
+
 " try majutsushi/tagbar
 NeoBundle "majutsushi/tagbar"
 nnoremap <leader>t :TagbarToggle<CR>
@@ -75,7 +81,7 @@ let g:tagbar_type_go = {
 
 " file sidebar
 NeoBundle 'scrooloose/nerdtree'
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
 
 " syntax checker
 NeoBundle 'scrooloose/syntastic'
