@@ -48,6 +48,12 @@ NeoBundle "tagbar-phpctags"
 "let g:tagbar_phpctags_bin='$HOME/.vim/bundle/tagbar-phpctags/bin'
 let g:tagbar_phpctags_memory_limit = '512M'
 
+" Ruby stuff
+NeoBundle "vim-ruby/vim-ruby"
+
+" matchit
+NeoBundle "matchit.zip"
+
 " try majutsushi/tagbar
 NeoBundle "majutsushi/tagbar"
 nnoremap <leader>t :TagbarToggle<CR>
@@ -77,6 +83,16 @@ let g:tagbar_type_go = {
     \ },
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
+\ }
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
 \ }
 
 " file sidebar
