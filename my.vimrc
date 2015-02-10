@@ -24,8 +24,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " golang
 NeoBundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
-au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
-au Filetype go nnoremap <leader>g :tab split <CR>:exe "GoDef"<CR>
+" autoclose scratch window
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au Filetype go nnoremap <leader>g :split <CR>:exe "GoDef"<CR>
+let g:go_auto_type_info = 1
 
 " Git integration, autodelete hidden fugitive buffers
 NeoBundle 'tpope/vim-fugitive'
@@ -126,8 +130,12 @@ set guifont=Menlo\ Regular:h14
 
 " Use spaces for tabs
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+" tabstop is 2 for ruby
+autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
 
 " move the backup and swap directories
 set backupdir=~/.vim/backup,.,/tmp
@@ -139,3 +147,6 @@ set laststatus=2
 " highlight the current column and line of the cursor
 set cursorcolumn
 set cursorline
+
+" colorscheme
+colorscheme koehler
