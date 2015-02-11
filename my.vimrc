@@ -47,9 +47,7 @@ NeoBundle "stephpy/vim-php-cs-fixer"
 let g:php_cs_fixer_level = "psr2"
 
 " better php ctags support?
-"NeoBundle "vim-php/tagbar-phpctags.vim"
 NeoBundle "tagbar-phpctags"
-"let g:tagbar_phpctags_bin='$HOME/.vim/bundle/tagbar-phpctags/bin'
 let g:tagbar_phpctags_memory_limit = '512M'
 
 " Ruby stuff
@@ -135,6 +133,8 @@ set shiftwidth=4
 set expandtab
 " tabstop is 2 for ruby
 autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+" tabstop for python
+autocmd Filetype python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 
 " move the backup and swap directories
