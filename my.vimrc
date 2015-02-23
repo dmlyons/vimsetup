@@ -31,6 +31,10 @@ au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>g :split <CR>:exe "GoDef"<CR>
 let g:go_auto_type_info = 1
 
+" neocomplete
+NeoBundle 'Shougo/neocomplete.vim'
+let g:neocomplete#enable_at_startup = 1 
+
 " Git integration, autodelete hidden fugitive buffers
 NeoBundle 'tpope/vim-fugitive'
 autocmd BufReadPost fugitive://* set bufhidden=delete
