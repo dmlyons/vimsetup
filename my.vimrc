@@ -25,7 +25,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 " autoclose scratch window
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>g :split <CR>:exe "GoDef"<CR>
@@ -35,11 +35,17 @@ let g:go_auto_type_info = 1
 NeoBundle 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1 
 
+" Git integration, autodelete hidden fugitive buffers
+NeoBundle 'tpope/vim-fugitive'
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
 " surround
 NeoBundle "tpope/vim-surround"
 
 " php syntax highlighting
 NeoBundle 'StanAngeloff/php.vim'
+au BufRead,BufNewFile *.inc setfiletype php
 
 " php fixer
 NeoBundle "stephpy/vim-php-cs-fixer"
@@ -149,3 +155,10 @@ set cursorline
 
 " colorscheme
 colorscheme koehler
+
+" https://github.com/Homebrew/homebrew/issues/19942
+set regexpengine=1
+
+" persistant undo
+set undofile
+set undodir=~/.vim/undo
