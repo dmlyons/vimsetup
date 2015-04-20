@@ -54,9 +54,11 @@ let g:php_cs_fixer_level = "psr2"
 " better php ctags support?
 NeoBundle "tagbar-phpctags"
 let g:tagbar_phpctags_memory_limit = '512M'
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " Ruby stuff
 NeoBundle "vim-ruby/vim-ruby"
+autocmd FileType ruby compiler ruby
 
 " matchit
 NeoBundle "matchit.zip"
