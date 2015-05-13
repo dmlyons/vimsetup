@@ -30,6 +30,9 @@ let g:go_fmt_command = "goimports"
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>g :split <CR>:exe "GoDef"<CR>
 let g:go_auto_type_info = 1
+let g:go_highlight_operators = 1
+"set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+"autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 " neocomplete
 NeoBundle 'Shougo/neocomplete.vim'
