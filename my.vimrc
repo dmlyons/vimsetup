@@ -29,8 +29,12 @@ let g:go_fmt_command = "goimports"
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>g :split <CR>:exe "GoDef"<CR>
-let g:go_auto_type_info = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_auto_type_info = 1
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
@@ -42,6 +46,9 @@ let g:neocomplete#enable_at_startup = 1
 NeoBundle 'tpope/vim-fugitive'
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" rust
+NeoBundle "wting/rust.vim"
 
 " surround
 NeoBundle "tpope/vim-surround"
@@ -167,3 +174,18 @@ set regexpengine=1
 " persistant undo
 set undofile
 set undodir=~/.vim/undo
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window (for an alternative on Windows, see simalt below).
+  set lines=999 columns=999
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
