@@ -28,7 +28,11 @@ let g:go_fmt_command = "goimports"
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au FileType go nmap <Leader>s <Plug>(go-implements)
-au Filetype go nnoremap <leader>g :split <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>gb :exe "GoBuild"<CR>
+au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
+au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
+au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -122,6 +126,9 @@ nnoremap <leader>f :NERDTreeToggle<CR>
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
 
+" ag
+NeoBundle 'rking/ag.vim'
+
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 
@@ -189,3 +196,8 @@ else
   endif
 endif
 
+" autoreload vimrc
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
