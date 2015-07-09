@@ -29,6 +29,7 @@ let g:go_fmt_command = "goimports"
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>gD :split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gb :exe "GoBuild"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
@@ -55,27 +56,27 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 NeoBundle "wting/rust.vim"
 
 " surround
-NeoBundle "tpope/vim-surround"
+" NeoBundle "tpope/vim-surround"
 
 " php syntax highlighting
 NeoBundle 'StanAngeloff/php.vim'
 au BufRead,BufNewFile *.inc setfiletype php
 
 " php fixer
-NeoBundle "stephpy/vim-php-cs-fixer"
-let g:php_cs_fixer_level = "psr2"
+" NeoBundle "stephpy/vim-php-cs-fixer"
+" let g:php_cs_fixer_level = "psr2"
 
 " better php ctags support?
-NeoBundle "tagbar-phpctags"
-let g:tagbar_phpctags_memory_limit = '512M'
-autocmd FileType tagbar setlocal nocursorline nocursorcolumn
+" NeoBundle "tagbar-phpctags"
+" let g:tagbar_phpctags_memory_limit = '512M'
+" autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " Ruby stuff
 NeoBundle "vim-ruby/vim-ruby"
 autocmd FileType ruby compiler ruby
 
 " matchit
-NeoBundle "matchit.zip"
+" NeoBundle "matchit.zip"
 
 " try majutsushi/tagbar
 NeoBundle "majutsushi/tagbar"
@@ -125,9 +126,19 @@ nnoremap <leader>f :NERDTreeToggle<CR>
 " syntax checker
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" airline
+NeoBundle 'bling/vim-airline'
 
 " ag
-NeoBundle 'rking/ag.vim'
+"" NeoBundle 'rking/ag.vim'
 
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
