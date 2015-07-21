@@ -29,7 +29,7 @@ let g:go_fmt_command = "goimports"
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
-au Filetype go nnoremap <leader>gD :split <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gb :exe "GoBuild"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
@@ -126,10 +126,10 @@ nnoremap <leader>f :NERDTreeToggle<CR>
 " syntax checker
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
