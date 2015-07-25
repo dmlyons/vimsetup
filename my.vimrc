@@ -177,14 +177,14 @@ set backupdir=~/.vim/backup,.,/tmp
 set directory=~/.vim/backup,.,/tmp
 
 " always show the status line
-set laststatus=2
+"set laststatus=2
+
+" colorscheme
+colorscheme koehler
 
 " highlight the current column and line of the cursor
 set cursorcolumn
 set cursorline
-
-" colorscheme
-colorscheme koehler
 
 " https://github.com/Homebrew/homebrew/issues/19942
 set regexpengine=1
@@ -206,6 +206,9 @@ else
     set columns=100
   endif
 endif
+
+set mouse=a
+syntax enable
 
 " autoreload vimrc
 augroup reload_vimrc " {
