@@ -209,6 +209,8 @@ endif
 
 set mouse=a
 syntax enable
+set clipboard=unnamed
+set smartcase
 
 " autoreload vimrc
 augroup reload_vimrc " {
