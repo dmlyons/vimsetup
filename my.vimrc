@@ -44,8 +44,18 @@ let g:go_auto_type_info = 1
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 " neocomplete
-NeoBundle 'Shougo/neocomplete.vim'
-let g:neocomplete#enable_at_startup = 1 
+"NeoBundle 'Shougo/neocomplete.vim'
+"let g:neocomplete#enable_at_startup = 1 
+
+" youcompleteme
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build'      : {
+        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+        \ }
+     \ }
 
 " Git integration, autodelete hidden fugitive buffers
 NeoBundle 'tpope/vim-fugitive'
@@ -126,10 +136,11 @@ nnoremap <leader>f :NERDTreeToggle<CR>
 " syntax checker
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -177,7 +188,7 @@ set backupdir=~/.vim/backup,.,/tmp
 set directory=~/.vim/backup,.,/tmp
 
 " always show the status line
-"set laststatus=2
+set laststatus=2
 
 " colorscheme
 colorscheme koehler
@@ -211,6 +222,10 @@ set mouse=a
 syntax enable
 set clipboard=unnamed
 set smartcase
+" make backspace sane
+set backspace=indent,eol,start
+
+au CursorHold * checktime
 
 " autoreload vimrc
 augroup reload_vimrc " {
