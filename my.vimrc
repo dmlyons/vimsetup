@@ -62,9 +62,6 @@ NeoBundle 'tpope/vim-fugitive'
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" rust
-NeoBundle "wting/rust.vim"
-
 " surround
 " NeoBundle "tpope/vim-surround"
 
@@ -82,8 +79,8 @@ au BufRead,BufNewFile *.inc setfiletype php
 " autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " Ruby stuff
-NeoBundle "vim-ruby/vim-ruby"
-autocmd FileType ruby compiler ruby
+"NeoBundle "vim-ruby/vim-ruby"
+"autocmd FileType ruby compiler ruby
 
 " matchit
 " NeoBundle "matchit.zip"
@@ -225,7 +222,11 @@ set smartcase
 " make backspace sane
 set backspace=indent,eol,start
 
+" check to see if the file has been updated more often
 au CursorHold * checktime
+
+" increase timeout on install for YCM
+let g:neobundle#install_process_timeout = 1500
 
 " autoreload vimrc
 augroup reload_vimrc " {
