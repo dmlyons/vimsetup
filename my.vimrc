@@ -44,18 +44,19 @@ let g:go_auto_type_info = 1
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 " neocomplete
-"NeoBundle 'Shougo/neocomplete.vim'
-"let g:neocomplete#enable_at_startup = 1 
+NeoBundle 'Shougo/neocomplete.vim'
+let g:neocomplete#enable_at_startup = 1 
+let g:neocomplete#enable_smart_case = 1
 
 " youcompleteme
-NeoBundle 'Valloric/YouCompleteMe', {
-     \ 'build'      : {
-        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-        \ }
-     \ }
+"NeoBundle 'Valloric/YouCompleteMe', {
+"     \ 'build'      : {
+"        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+"        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+"        \ }
+"     \ }
 
 " Git integration, autodelete hidden fugitive buffers
 NeoBundle 'tpope/vim-fugitive'
@@ -125,6 +126,17 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+let g:tagbar_type_php  = {
+  \ 'ctagstype' : 'php',
+  \ 'kinds'     : [
+      \ 'i:interfaces',
+      \ 'c:classes',
+      \ 'd:constant definitions',
+      \ 'f:functions',
+      \ 'j:javascript functions:1'
+  \ ]
+\ }
+
 
 " file sidebar
 NeoBundle 'scrooloose/nerdtree'
