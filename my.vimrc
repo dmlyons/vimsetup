@@ -43,32 +43,26 @@ let g:go_auto_type_info = 1
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
-" neocomplete
-NeoBundle 'Shougo/neocomplete.vim'
-let g:neocomplete#enable_at_startup = 1 
-let g:neocomplete#enable_smart_case = 1
+" deoplete
+NeoBundle 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
 
-" youcompleteme
-"NeoBundle 'Valloric/YouCompleteMe', {
-"     \ 'build'      : {
-"        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-"        \ }
-"     \ }
+" neocomplete
+"NeoBundle 'Shougo/neocomplete.vim'
+"let g:neocomplete#enable_at_startup = 1 
+"let g:neocomplete#enable_smart_case = 1
 
 " Git integration, autodelete hidden fugitive buffers
-NeoBundle 'tpope/vim-fugitive'
-autocmd BufReadPost fugitive://* set bufhidden=delete
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"NeoBundle 'tpope/vim-fugitive'
+"autocmd BufReadPost fugitive://* set bufhidden=delete
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " surround
 " NeoBundle "tpope/vim-surround"
 
 " php syntax highlighting
-NeoBundle 'StanAngeloff/php.vim'
-au BufRead,BufNewFile *.inc setfiletype php
+"NeoBundle 'StanAngeloff/php.vim'
+"au BufRead,BufNewFile *.inc setfiletype php
 
 " php fixer
 " NeoBundle "stephpy/vim-php-cs-fixer"
@@ -149,10 +143,12 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 0
+
 
 " airline
 NeoBundle 'bling/vim-airline'
@@ -191,7 +187,6 @@ autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop for python
 autocmd Filetype python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
-
 " move the backup and swap directories
 set backupdir=~/.vim/backup,.,/tmp
 set directory=~/.vim/backup,.,/tmp
@@ -219,12 +214,12 @@ if has("gui_running")
   set lines=999 columns=999
 else
   " This is console Vim.
-  if exists("+lines")
-    set lines=50
-  endif
-  if exists("+columns")
-    set columns=100
-  endif
+"  if exists("+lines")
+"    set lines=50
+"  endif
+"  if exists("+columns")
+"    set columns=100
+"  endif
 endif
 
 set mouse=a
@@ -245,3 +240,5 @@ augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
