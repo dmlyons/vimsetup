@@ -47,6 +47,9 @@ let g:go_auto_type_info = 1
 NeoBundle 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
 
+" code minimap?
+" NeoBundle 'severin-lemaignan/vim-minimap'
+
 " neocomplete
 "NeoBundle 'Shougo/neocomplete.vim'
 "let g:neocomplete#enable_at_startup = 1 
