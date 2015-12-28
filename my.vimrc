@@ -185,6 +185,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+" tabstop is 2 for yaml
+autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop is 2 for ruby
 autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop for python
@@ -245,3 +247,6 @@ augroup reload_vimrc " {
 augroup END " }
 
 hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
+
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
