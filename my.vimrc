@@ -43,22 +43,11 @@ let g:go_auto_type_info = 1
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
-" deoplete
-NeoBundle 'Shougo/deoplete.nvim'
-let g:deoplete#enable_at_startup = 1
-
-" code minimap?
-" NeoBundle 'severin-lemaignan/vim-minimap'
-
-" neocomplete
-"NeoBundle 'Shougo/neocomplete.vim'
-"let g:neocomplete#enable_at_startup = 1 
-"let g:neocomplete#enable_smart_case = 1
-
-" Git integration, autodelete hidden fugitive buffers
-"NeoBundle 'tpope/vim-fugitive'
-"autocmd BufReadPost fugitive://* set bufhidden=delete
-"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+if has('nvim')
+    " deoplete
+    NeoBundle 'Shougo/deoplete.nvim'
+    let g:deoplete#enable_at_startup = 1
+endif
 
 " surround
 " NeoBundle "tpope/vim-surround"
@@ -206,12 +195,14 @@ colorscheme koehler
 set cursorcolumn
 set cursorline
 
-" https://github.com/Homebrew/homebrew/issues/19942
-set regexpengine=1
+if has('nvim')
+    " https://github.com/Homebrew/homebrew/issues/19942
+    set regexpengine=1
 
-" persistant undo
-set undofile
-set undodir=~/.vim/undo
+    " persistant undo
+    set undofile
+    set undodir=~/.vim/undo
+endif
 
 if has("gui_running")
   " GUI is running or is about to start.
