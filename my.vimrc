@@ -51,6 +51,8 @@ if has('nvim')
     let g:deoplete#enable_smart_case = 1
     let g:deoplete#omni_patterns = {}
     let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
+    let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+    let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
 
     set completeopt+=noinsert
 
