@@ -59,6 +59,27 @@ if has('nvim')
     " Disable auto selection
     set completeopt+=noselect
     let g:python3_host_prog  = "/usr/local/bin/python3"
+
+    " neomake
+    NeoBundle 'benekastah/neomake'
+    autocmd! BufWritePost * Neomake
+    let g:neomake_open_list =2 
+    let g:neomake_list_height = 4
+else
+    " syntax checker
+    NeoBundle 'scrooloose/syntastic'
+    let g:syntastic_php_phpcs_args = "--standard=PSR2"
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_aggregate_errors = 1
+    let g:syntastic_always_populate_loc_list = 0
+    let g:syntastic_go_checkers = ['golint', 'gotype', 'errcheck']
+    "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 endif
 
 " surround
@@ -139,22 +160,6 @@ let g:tagbar_type_php  = {
 " file sidebar
 NeoBundle 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeToggle<CR>
-
-" syntax checker
-NeoBundle 'scrooloose/syntastic'
-let g:syntastic_php_phpcs_args = "--standard=PSR2"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
 
 " airline
 NeoBundle 'bling/vim-airline'
