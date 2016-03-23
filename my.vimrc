@@ -53,12 +53,17 @@ if has('nvim')
     let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
     let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
     let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
-
     set completeopt+=noinsert
+
+    " deoplete-go
+    NeoBundle 'zchee/deoplete-go'
 
     " Disable auto selection
     set completeopt+=noselect
     let g:python3_host_prog  = "/usr/local/bin/python3"
+
+    " php
+    NeoBundle 'StanAngeloff/php.vim'
 
     " neomake
     NeoBundle 'benekastah/neomake'
@@ -260,3 +265,4 @@ hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
