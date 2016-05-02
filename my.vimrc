@@ -21,6 +21,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 " Add or remove your Bundles here:
 
+" SQL
+NeoBundle 'vim-scripts/SQLUtilities'
+NeoBundle 'vim-scripts/Align'
+
 " golang
 NeoBundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
@@ -40,6 +44,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1
+let g:go_def_reuse_buffer = 1
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
