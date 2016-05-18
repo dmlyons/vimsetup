@@ -21,10 +21,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 " Add or remove your Bundles here:
 
-" SQL
-NeoBundle 'vim-scripts/SQLUtilities'
-NeoBundle 'vim-scripts/Align'
-
 " golang
 NeoBundle 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
