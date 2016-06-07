@@ -68,7 +68,7 @@ if has('nvim')
 
     " neomake
     NeoBundle 'benekastah/neomake'
-    autocmd! BufWritePost * Neomake
+    autocmd! BufWritePost * Neomake!
     let g:neomake_open_list =2 
     let g:neomake_list_height = 4
 else
@@ -87,6 +87,12 @@ else
     let g:syntastic_go_checkers = ['golint', 'gotype', 'errcheck']
     "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 endif
+
+" Comments
+NeoBundle "scrooloose/nerdcommenter"
+
+" Tabular
+NeoBundle "godlygeek/tabular"
 
 " surround
 " NeoBundle "tpope/vim-surround"
