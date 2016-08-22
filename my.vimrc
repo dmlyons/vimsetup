@@ -1,28 +1,23 @@
-" follow install directions at: https://github.com/Shougo/neobundle.vim
+" install: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-" Add or remove your Bundles here:
+" Add or remove your Plugins here:
 
 " golang
-NeoBundle 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 " autoclose scratch window
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -35,45 +30,49 @@ au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 let g:go_highlight_functions = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1
 let g:go_def_reuse_buffer = 1
+let g:go_gocode_autobuild = 1
+let g:go_gocode_propose_builtins = 1 " add builtins to the autocomplete
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 if has('nvim')
     " deoplete
-    NeoBundle 'Shougo/deoplete.nvim'
+    Plugin 'Shougo/deoplete.nvim'
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#sources#go = 'vim-go'
     let g:deoplete#enable_smart_case = 1
     let g:deoplete#omni_patterns = {}
     let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
-    let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+    "let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
     let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
     set completeopt+=noinsert
 
     " deoplete-go
-    NeoBundle 'zchee/deoplete-go'
+    Plugin 'zchee/deoplete-go'
 
     " Disable auto selection
     set completeopt+=noselect
     let g:python3_host_prog  = "/usr/local/bin/python3"
 
     " php
-    NeoBundle 'StanAngeloff/php.vim'
+    Plugin 'StanAngeloff/php.vim'
 
     " neomake
-    NeoBundle 'benekastah/neomake'
+    Plugin 'benekastah/neomake'
     autocmd! BufWritePost * Neomake!
     let g:neomake_open_list =2 
     let g:neomake_list_height = 4
 else
     " syntax checker
-    NeoBundle 'scrooloose/syntastic'
+    Plugin 'scrooloose/syntastic'
     let g:syntastic_php_phpcs_args = "--standard=PSR2"
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -84,41 +83,47 @@ else
     let g:syntastic_check_on_wq = 0
     let g:syntastic_aggregate_errors = 1
     let g:syntastic_always_populate_loc_list = 0
-    let g:syntastic_go_checkers = ['golint', 'gotype', 'errcheck']
+    let g:syntastic_go_checkers = ['golint', 'govet', 'gotype', 'errcheck']
     "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 endif
 
+" Snippets
+Plugin 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " Comments
-NeoBundle "scrooloose/nerdcommenter"
+Plugin 'scrooloose/nerdcommenter'
 
 " Tabular
-NeoBundle "godlygeek/tabular"
+Plugin 'godlygeek/tabular'
 
 " surround
-" NeoBundle "tpope/vim-surround"
+" Plugin "tpope/vim-surround"
 
 " php syntax highlighting
-"NeoBundle 'StanAngeloff/php.vim'
+"Plugin 'StanAngeloff/php.vim'
 "au BufRead,BufNewFile *.inc setfiletype php
 
 " php fixer
-" NeoBundle "stephpy/vim-php-cs-fixer"
+" Plugin "stephpy/vim-php-cs-fixer"
 " let g:php_cs_fixer_level = "psr2"
 
 " better php ctags support?
-" NeoBundle "tagbar-phpctags"
+" Plugin "tagbar-phpctags"
 " let g:tagbar_phpctags_memory_limit = '512M'
 " autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " Ruby stuff
-"NeoBundle "vim-ruby/vim-ruby"
+"Plugin "vim-ruby/vim-ruby"
 "autocmd FileType ruby compiler ruby
 
 " matchit
-" NeoBundle "matchit.zip"
+" Plugin "matchit.zip"
 
 " try majutsushi/tagbar
-NeoBundle "majutsushi/tagbar"
+Plugin 'majutsushi/tagbar'
 nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -170,26 +175,27 @@ let g:tagbar_type_php  = {
 
 
 " file sidebar
-NeoBundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeToggle<CR>
 
 " airline
-NeoBundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
-" ag
-"" NeoBundle 'rking/ag.vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
-" You can specify revision/branch/tag.
-"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 " I like line numbers
 set number
