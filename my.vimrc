@@ -16,6 +16,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Add or remove your Plugins here:
 
+Plugin 'tpope/vim-fugitive'
+
 " golang
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
