@@ -68,10 +68,10 @@ if has('nvim')
     Plugin 'StanAngeloff/php.vim'
 
     " neomake
-    Plugin 'benekastah/neomake'
-    autocmd! BufWritePost * Neomake!
-    let g:neomake_open_list =2 
-    let g:neomake_list_height = 4
+"    Plugin 'benekastah/neomake'
+"    autocmd! BufWritePost * Neomake!
+"    let g:neomake_open_list =2 
+"    let g:neomake_list_height = 4
 else
     " syntax checker
     Plugin 'scrooloose/syntastic'
@@ -90,10 +90,10 @@ else
 endif
 
 " Snippets
-Plugin 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Plugin 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Comments
 Plugin 'scrooloose/nerdcommenter'
