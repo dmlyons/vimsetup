@@ -24,10 +24,11 @@ let g:go_fmt_command = "goimports"
 " autoclose scratch window
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
+autocmd BufWritePost *.go :GoBuild
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
-au Filetype go nnoremap <leader>gb :exe "GoBuild"<CR>
+au Filetype go nnoremap gb :exe "GoBuild"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
@@ -42,8 +43,14 @@ let g:go_auto_type_info = 1
 let g:go_def_reuse_buffer = 1
 let g:go_gocode_autobuild = 1
 let g:go_gocode_propose_builtins = 1 " add builtins to the autocomplete
+let g:go_metalinter_autosave = 1
+let g:go_list_type = "quickfix"
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-"autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+"autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
+
+" PHP
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'vim-php/tagbar-phpctags.vim'
 
 if has('nvim')
     " deoplete
@@ -53,7 +60,7 @@ if has('nvim')
     let g:deoplete#enable_smart_case = 1
     let g:deoplete#omni_patterns = {}
     let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
-    "let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+    let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
     let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
     set completeopt+=noinsert
 
