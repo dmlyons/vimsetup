@@ -48,9 +48,17 @@ let g:go_list_type = "quickfix"
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
 
+" Protobuf syntax
+Plugin 'uarun/vim-protobuf'
+
 " PHP
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'vim-php/tagbar-phpctags.vim'
+" php fixer
+Plugin 'stephpy/vim-php-cs-fixer'
+"let g:php_cs_fixer_level = "psr2"
+let g:php_cs_fixer_rules = "@PSR2"                " wich rules or ruleset ?
+"autocmd BufWritePost *.php :call PhpCsFixerFixFile()
 
 if has('nvim')
     " deoplete
@@ -80,6 +88,7 @@ if has('nvim')
 "    let g:neomake_open_list =2 
 "    let g:neomake_list_height = 4
 else
+    Plugin 'Valloric/YouCompleteMe'
     " syntax checker
     Plugin 'scrooloose/syntastic'
     let g:syntastic_php_phpcs_args = "--standard=PSR2"
@@ -115,9 +124,6 @@ Plugin 'godlygeek/tabular'
 "Plugin 'StanAngeloff/php.vim'
 "au BufRead,BufNewFile *.inc setfiletype php
 
-" php fixer
-" Plugin "stephpy/vim-php-cs-fixer"
-" let g:php_cs_fixer_level = "psr2"
 
 " better php ctags support?
 " Plugin "tagbar-phpctags"
@@ -266,6 +272,7 @@ endif
 
 set mouse=a
 syntax enable
+
 set clipboard=unnamed
 set smartcase
 " make backspace sane
