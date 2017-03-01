@@ -1,25 +1,32 @@
-" install: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"Installation
+
+"Download plug.vim and put it in the "autoload" directory.
+
+"Unix VIM
+
+"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+"
+"Neovim
+
+"curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim<Paste>
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Add or remove your Plugs here:
 
-" Add or remove your Plugins here:
-
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " golang
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 " autoclose scratch window
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -49,20 +56,20 @@ let g:go_list_type = "quickfix"
 "autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
 
 " Protobuf syntax
-Plugin 'uarun/vim-protobuf'
+Plug 'uarun/vim-protobuf'
 
 " PHP
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'vim-php/tagbar-phpctags.vim'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'vim-php/tagbar-phpctags.vim'
 " php fixer
-Plugin 'stephpy/vim-php-cs-fixer'
+Plug 'stephpy/vim-php-cs-fixer'
 "let g:php_cs_fixer_level = "psr2"
 let g:php_cs_fixer_rules = "@PSR2"                " wich rules or ruleset ?
 "autocmd BufWritePost *.php :call PhpCsFixerFixFile()
 
 if has('nvim')
     " deoplete
-    Plugin 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim'
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#sources#go = 'vim-go'
     let g:deoplete#enable_smart_case = 1
@@ -73,24 +80,24 @@ if has('nvim')
     set completeopt+=noinsert
 
     " deoplete-go
-    Plugin 'zchee/deoplete-go'
+    Plug 'zchee/deoplete-go'
 
     " Disable auto selection
     set completeopt+=noselect
     let g:python3_host_prog  = "/usr/local/bin/python3"
 
     " php
-    Plugin 'StanAngeloff/php.vim'
+    Plug 'StanAngeloff/php.vim'
 
     " neomake
-"    Plugin 'benekastah/neomake'
+"    Plug 'benekastah/neomake'
 "    autocmd! BufWritePost * Neomake!
 "    let g:neomake_open_list =2 
 "    let g:neomake_list_height = 4
 else
-    Plugin 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe'
     " syntax checker
-    Plugin 'scrooloose/syntastic'
+    Plug 'scrooloose/syntastic'
     let g:syntastic_php_phpcs_args = "--standard=PSR2"
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -106,39 +113,39 @@ else
 endif
 
 " Snippets
-" Plugin 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Comments
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Tabular
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 " surround
-" Plugin "tpope/vim-surround"
+" Plug "tpope/vim-surround"
 
 " php syntax highlighting
-"Plugin 'StanAngeloff/php.vim'
+"Plug 'StanAngeloff/php.vim'
 "au BufRead,BufNewFile *.inc setfiletype php
 
 
 " better php ctags support?
-" Plugin "tagbar-phpctags"
+" Plug "tagbar-phpctags"
 " let g:tagbar_phpctags_memory_limit = '512M'
 " autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " Ruby stuff
-"Plugin "vim-ruby/vim-ruby"
+"Plug "vim-ruby/vim-ruby"
 "autocmd FileType ruby compiler ruby
 
 " matchit
-" Plugin "matchit.zip"
+" Plug "matchit.zip"
 
 " try majutsushi/tagbar
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -190,27 +197,17 @@ let g:tagbar_type_php  = {
 
 
 " file sidebar
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeToggle<CR>
 
 " airline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 
 " I like line numbers
 set number
