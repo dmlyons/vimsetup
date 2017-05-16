@@ -51,6 +51,9 @@ let g:go_def_reuse_buffer = 1
 let g:go_gocode_autobuild = 1
 let g:go_gocode_propose_builtins = 1 " add builtins to the autocomplete
 let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_deadline = "15s"
 let g:go_list_type = "quickfix"
 "set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 "autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
@@ -69,7 +72,12 @@ let g:php_cs_fixer_rules = "@PSR2"                " wich rules or ruleset ?
 
 if has('nvim')
     " deoplete
-    Plug 'Shougo/deoplete.nvim'
+    function! BuildDeoplete(info)
+        !pip3 install --upgrade neovim
+        :UpdateRemotePlugins
+    endfunction
+    Plug 'Shougo/deoplete.nvim', { 'do': function('BuildDeoplete') }
+    "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#sources#go = 'vim-go'
     let g:deoplete#enable_smart_case = 1
@@ -82,7 +90,7 @@ if has('nvim')
     Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
     " deoplete-go
-    Plug 'zchee/deoplete-go'
+    Plug 'zchee/deoplete-go', { 'do': 'make'}
 
     " Disable auto selection
     set completeopt+=noselect
