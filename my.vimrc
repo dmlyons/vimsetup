@@ -25,6 +25,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 
+" Terraform formatting (HCL)
+Plug 'fatih/vim-hclfmt'
+
 " golang
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
