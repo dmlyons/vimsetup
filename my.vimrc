@@ -42,6 +42,8 @@ au Filetype go nnoremap gb :exe "GoBuild"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
+" highlight identical variables:
+let g:go_auto_sameids = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_methods = 1
@@ -101,35 +103,22 @@ if has('nvim')
 
     " php
     Plug 'StanAngeloff/php.vim'
-
-    " neomake
-"    Plug 'benekastah/neomake'
-"    autocmd! BufWritePost * Neomake!
-"    let g:neomake_open_list =2 
-"    let g:neomake_list_height = 4
 else
     Plug 'Valloric/YouCompleteMe'
-    " syntax checker
-    Plug 'scrooloose/syntastic'
-    let g:syntastic_php_phpcs_args = "--standard=PSR2"
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-    let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_aggregate_errors = 1
-    let g:syntastic_always_populate_loc_list = 0
-    let g:syntastic_go_checkers = ['golint', 'govet', 'gotype', 'errcheck']
-    "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 endif
 
-" Snippets
-" Plug 'SirVer/ultisnips'
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" airline
+Plug 'bling/vim-airline'
+
+" ale linting
+Plug 'w0rp/ale'
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+" keep sign column
+let g:ale_sign_column_always = 1
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
@@ -139,16 +128,6 @@ Plug 'godlygeek/tabular'
 
 " surround
 " Plug "tpope/vim-surround"
-
-" php syntax highlighting
-"Plug 'StanAngeloff/php.vim'
-"au BufRead,BufNewFile *.inc setfiletype php
-
-
-" better php ctags support?
-" Plug "tagbar-phpctags"
-" let g:tagbar_phpctags_memory_limit = '512M'
-" autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " Ruby stuff
 "Plug "vim-ruby/vim-ruby"
@@ -213,9 +192,6 @@ let g:tagbar_type_php  = {
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeToggle<CR>
 
-" airline
-Plug 'bling/vim-airline'
-
 " All of your Plugs must be added before the following line
 call plug#end()
 filetype plugin indent on    " required
@@ -264,20 +240,6 @@ if has('nvim')
     " persistant undo
     set undofile
     set undodir=~/.vim/undo
-endif
-
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window (for an alternative on Windows, see simalt below).
-  set lines=999 columns=999
-else
-  " This is console Vim.
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
 endif
 
 set mouse=a
