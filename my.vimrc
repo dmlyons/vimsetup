@@ -103,22 +103,23 @@ if has('nvim')
 
     " php
     Plug 'StanAngeloff/php.vim'
+
+    "ale linting
+    Plug 'w0rp/ale'
+    " Error and warning signs.
+    let g:ale_sign_error = '⤫'
+    let g:ale_sign_warning = '⚠'
+    " Enable integration with airline.
+    let g:airline#extensions#ale#enabled = 1
+    " keep sign column
+    let g:ale_sign_column_always = 1
+
 else
     Plug 'Valloric/YouCompleteMe'
 endif
 
 " airline
 Plug 'bling/vim-airline'
-
-" ale linting
-Plug 'w0rp/ale'
-" Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
-" keep sign column
-let g:ale_sign_column_always = 1
 
 " Comments
 Plug 'scrooloose/nerdcommenter'
