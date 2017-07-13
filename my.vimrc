@@ -231,8 +231,8 @@ set laststatus=2
 colorscheme koehler
 
 " highlight the current column and line of the cursor
-set cursorcolumn
-set cursorline
+"set cursorcolumn
+"set cursorline
 
 if has('nvim')
     " https://github.com/Homebrew/homebrew/issues/19942
