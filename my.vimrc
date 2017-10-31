@@ -11,6 +11,8 @@ if !1 | finish | endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set modelines=0
+
 
 call plug#begin('~/.vim/plugged')
 
@@ -27,7 +29,7 @@ let g:go_fmt_command = "goimports"
 " autoclose scratch window
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
-autocmd BufWritePost *.go :GoBuild
+"autocmd BufWritePost *.go :GoBuild
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
@@ -36,7 +38,7 @@ au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 " highlight identical variables:
-let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_methods = 1
@@ -48,7 +50,7 @@ let g:go_auto_type_info = 1
 let g:go_def_reuse_buffer = 1
 let g:go_gocode_autobuild = 1
 let g:go_gocode_propose_builtins = 1 " add builtins to the autocomplete
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_deadline = "15s"
@@ -109,6 +111,7 @@ let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1
 " keep sign column
 let g:ale_sign_column_always = 1
+let g:ale_linters = {'go': ['gofmt -e', 'golint', 'go vet', 'go build']}
 
 " airline
 Plug 'bling/vim-airline'
@@ -220,7 +223,7 @@ set directory=~/.vim/backup,.,/tmp
 set laststatus=2
 
 " colorscheme
-colorscheme koehler
+colorscheme torte
 
 " highlight the current column and line of the cursor
 "set cursorcolumn
