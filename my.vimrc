@@ -23,6 +23,10 @@ Plug 'tpope/vim-fugitive'
 " Terraform formatting (HCL)
 Plug 'fatih/vim-hclfmt'
 
+" ruby
+" Plug 'vim-ruby/vim-ruby'
+" Plug 'tpope/vim-rails'
+
 " golang
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
@@ -71,21 +75,25 @@ let g:php_cs_fixer_rules = "@PSR2"                " wich rules or ruleset ?
 "autocmd BufWritePost *.php :call PhpCsFixerFixFile()
 
 if has('nvim')
+    " vim delve
+    Plug 'sebdah/vim-delve'
+
     " deoplete
-    function! BuildDeoplete(info)
-        !pip3 install --upgrade neovim
+    function! BuildNeovim(info)
+        !pip3 install --upgrade neovim jedi psutil setproctitle
         :UpdateRemotePlugins
     endfunction
-    Plug 'Shougo/deoplete.nvim', { 'do': function('BuildDeoplete') }
-    "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#sources#go = 'vim-go'
-    let g:deoplete#enable_smart_case = 1
-    let g:deoplete#omni_patterns = {}
-    let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
-    let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-    let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
-    set completeopt+=noinsert
+    Plug 'roxma/nvim-completion-manager', { 'do': function('BuildNeovim') }
+"    Plug 'Shougo/deoplete.nvim', { 'do': function('BuildNeovim') }
+"    "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"    let g:deoplete#enable_at_startup = 1
+"    let g:deoplete#sources#go = 'vim-go'
+"    let g:deoplete#enable_smart_case = 1
+"    let g:deoplete#omni_patterns = {}
+"    let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
+"    let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+"    let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
+"    set completeopt+=noinsert
 
     Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
@@ -187,6 +195,10 @@ let g:tagbar_type_php  = {
 " file sidebar
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeToggle<CR>
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_jsdoc = 1
 
 " All of your Plugs must be added before the following line
 call plug#end()
