@@ -119,7 +119,7 @@ let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1
 " keep sign column
 let g:ale_sign_column_always = 1
-let g:ale_linters = {'go': ['gofmt -e', 'golint', 'go vet', 'go build']}
+let g:ale_linters = {'go': ['gofmt -e', 'golint', 'go vet', 'gotype', 'go build']}
 
 " airline
 Plug 'bling/vim-airline'
@@ -211,9 +211,6 @@ set number
 
 " Highlite search
 set hlsearch
-
-" slightly bigger font
-set guifont=Menlo\ Regular:h14
 
 " Use spaces for tabs
 set tabstop=4
