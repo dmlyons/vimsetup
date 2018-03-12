@@ -28,11 +28,61 @@ Plug 'fatih/vim-hclfmt'
 " Plug 'tpope/vim-rails'
 
 " golang
-Plug 'fatih/vim-go'
-let g:go_fmt_command = "goimports"
-" autoclose scratch window
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"au Filetype go nnoremap <leader>G :exe "GoDef" <CR>
+
+Plug 'neomake/neomake'
+autocmd BufWritePost * Neomake
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_gometalinter_maker = {
+  \ 'args': [
+  \   '--tests',
+  \   '--enable-gc',
+  \   '--concurrency=3',
+  \   '--fast',
+  \   '-D', 'aligncheck',
+  \   '-D', 'dupl',
+  \   '-D', 'gocyclo',
+  \   '-D', 'gotype',
+  \   '-E', 'errcheck',
+  \   '-E', 'misspell',
+  \   '-E', 'unused',
+  \   '%:p:h',
+  \ ],
+  \ 'append_file': 0,
+  \ 'errorformat':
+  \   '%E%f:%l:%c:%trror: %m,' .
+  \   '%W%f:%l:%c:%tarning: %m,' .
+  \   '%E%f:%l::%trror: %m,' .
+  \   '%W%f:%l::%tarning: %m'
+  \ }
+
+
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+let g:go_fmt_command = 'goimports'
+let g:go_fmt_fail_silently = 1
+let g:go_term_enabled = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+set completeopt=longest,menuone " auto complete setting
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns['default'] = '\h\w*'
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#align_class = 1
+
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+
+
+
 "autocmd BufWritePost *.go :GoBuild
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
@@ -41,104 +91,12 @@ au Filetype go nnoremap gb :exe "GoBuild"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
-" highlight identical variables:
-" let g:go_auto_sameids = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_auto_type_info = 1
-let g:go_def_reuse_buffer = 1
-let g:go_gocode_autobuild = 1
-let g:go_gocode_propose_builtins = 1 " add builtins to the autocomplete
-let g:go_metalinter_autosave = 0
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_deadline = "15s"
-let g:go_list_type = "quickfix"
-"set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-"autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
 
-" Protobuf syntax
-Plug 'uarun/vim-protobuf'
 
-" PHP
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'vim-php/tagbar-phpctags.vim'
-" php fixer
-Plug 'stephpy/vim-php-cs-fixer'
-"let g:php_cs_fixer_level = "psr2"
-let g:php_cs_fixer_rules = "@PSR2"                " wich rules or ruleset ?
-"autocmd BufWritePost *.php :call PhpCsFixerFixFile()
 
-if has('nvim')
-    " vim delve
-    Plug 'sebdah/vim-delve'
-
-    " deoplete
-    function! BuildNeovim(info)
-        !pip3 install --upgrade neovim jedi psutil setproctitle
-        :UpdateRemotePlugins
-    endfunction
-    Plug 'roxma/nvim-completion-manager', { 'do': function('BuildNeovim') }
-"    Plug 'Shougo/deoplete.nvim', { 'do': function('BuildNeovim') }
-"    "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"    let g:deoplete#enable_at_startup = 1
-"    let g:deoplete#sources#go = 'vim-go'
-"    let g:deoplete#enable_smart_case = 1
-"    let g:deoplete#omni_patterns = {}
-"    let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
-"    let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-"    let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
-"    set completeopt+=noinsert
-
-    Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-
-    " deoplete-go
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-    " Disable auto selection
-    set completeopt+=noselect
-    let g:python3_host_prog  = "/usr/local/bin/python3"
-
-    " php
-    Plug 'StanAngeloff/php.vim'
-else
-    Plug 'Valloric/YouCompleteMe'
-endif
-
-"ale linting
-Plug 'w0rp/ale'
-" Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
-" keep sign column
-let g:ale_sign_column_always = 1
-let g:ale_linters = {'go': ['gofmt -e', 'golint', 'go vet', 'gotype', 'go build']}
 
 " airline
 Plug 'bling/vim-airline'
-
-" Comments
-Plug 'scrooloose/nerdcommenter'
-
-" Tabular
-Plug 'godlygeek/tabular'
-
-" surround
-" Plug "tpope/vim-surround"
-
-" Ruby stuff
-"Plug "vim-ruby/vim-ruby"
-"autocmd FileType ruby compiler ruby
-
-" matchit
-" Plug "matchit.zip"
 
 " try majutsushi/tagbar
 Plug 'majutsushi/tagbar'
@@ -195,10 +153,6 @@ let g:tagbar_type_php  = {
 " file sidebar
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeToggle<CR>
-
-" Javascript
-Plug 'pangloss/vim-javascript'
-let g:javascript_plugin_jsdoc = 1
 
 " All of your Plugs must be added before the following line
 call plug#end()
