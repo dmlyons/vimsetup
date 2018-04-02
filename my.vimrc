@@ -24,8 +24,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-hclfmt'
 
 " ruby
-" Plug 'vim-ruby/vim-ruby'
-" Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 
 " golang
 
@@ -82,6 +82,8 @@ let g:deoplete#sources#go#align_class = 1
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 
 
+Plug 'sebdah/vim-delve'
+
 
 "autocmd BufWritePost *.go :GoBuild
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -92,11 +94,8 @@ au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 
-
-
-
 " airline
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 
 " try majutsushi/tagbar
 Plug 'majutsushi/tagbar'
@@ -149,6 +148,8 @@ let g:tagbar_type_php  = {
   \ ]
 \ }
 
+" Tagbar and proto
+Plug 'tenfyzhong/tagbar-proto.vim'
 
 " file sidebar
 Plug 'scrooloose/nerdtree'
@@ -203,6 +204,7 @@ endif
 
 set mouse=a
 syntax enable
+set termguicolors
 
 set clipboard=unnamed
 set smartcase
