@@ -155,11 +155,13 @@ Plug 'tenfyzhong/tagbar-proto.vim'
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeFind<CR>wincmd p<CR>
 nnoremap <leader>F :NERDTreeClose<CR>
-"nnoremap <leader>f :NERDTreeToggle<CR>:NERDTreeFind<CR>
+" close nerdtree if it is the last thing open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd vimenter * NERDTreeFind | wincmd p
 
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
-autocmd vimenter * NERDTreeFind | wincmd p
+
 
 
 " All of your Plugs must be added before the following line
