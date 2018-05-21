@@ -35,7 +35,7 @@ let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter', 'golint' ]
 let g:neomake_go_gometalinter_maker = {
   \ 'args': [
   \   '--tests',
@@ -63,10 +63,19 @@ let g:neomake_go_gometalinter_maker = {
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 let g:go_fmt_command = 'goimports'
-let g:go_fmt_fail_silently = 1
+"let g:go_fmt_fail_silently = 1
 let g:go_term_enabled = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
+let g:go_highlight_types = 1
+let g:go_list_type = "quickfix"
+
+" Jump between errors on quickfix list
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+" close the quickfix list
+nnoremap <leader>a :cclose<CR>
+
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 set completeopt=longest,menuone " auto complete setting
