@@ -169,8 +169,8 @@ Plug 'scrooloose/nerdtree'
 nnoremap <leader>f :NERDTreeFind<CR>wincmd p<CR>
 nnoremap <leader>F :NERDTreeClose<CR>
 " close nerdtree if it is the last thing open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd vimenter * NERDTreeFind | wincmd p
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd vimenter * NERDTreeFind | wincmd p
 
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
