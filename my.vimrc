@@ -189,11 +189,17 @@ set number
 " Highlite search
 set hlsearch
 
+augroup filetype
+  au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
+
 " Use spaces for tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+" tabstop is 2 for proto
+autocmd Filetype proto setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop is 2 for yaml
 autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop is 2 for ruby
@@ -215,14 +221,9 @@ colorscheme torte
 "set cursorcolumn
 "set cursorline
 
-if has('nvim')
-    " https://github.com/Homebrew/homebrew/issues/19942
-    set regexpengine=1
-
-    " persistant undo
-    set undofile
-    set undodir=~/.vim/undo
-endif
+" persistant undo
+set undofile
+set undodir=~/.vim/undo
 
 set mouse=a
 syntax enable
