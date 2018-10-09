@@ -67,6 +67,8 @@ let g:neomake_go_gometalinter_maker = {
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 let g:go_fmt_command = 'goimports'
+let g:go_def_mode = 'godef'
+let g:go_updatetime = 500
 "let g:go_fmt_fail_silently = 1
 let g:go_term_enabled = 1
 let g:go_auto_type_info = 1
@@ -85,6 +87,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 set completeopt=longest,menuone " auto complete setting
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_delay = 100
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns['default'] = '\h\w*'
@@ -175,6 +178,9 @@ nnoremap <leader>F :NERDTreeClose<CR>
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" sessions
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 
 " All of your Plugs must be added before the following line
@@ -182,6 +188,12 @@ call plug#end()
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+"
+
+let g:sessions_dir = '~/.vim/sessions'
+exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+
 
 " I like line numbers
 set number
