@@ -166,6 +166,10 @@ let g:tagbar_type_php  = {
   \ ]
 \ }
 
+" Javascript
+
+Plug 'pangloss/vim-javascript'
+
 " Tagbar and proto
 Plug 'tenfyzhong/tagbar-proto.vim'
 
