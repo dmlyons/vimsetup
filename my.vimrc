@@ -29,10 +29,6 @@ Plug 'tpope/vim-fugitive'
 " Terraform formatting (HCL)
 Plug 'fatih/vim-hclfmt'
 
-" ruby
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-
 " golang
 
 Plug 'neomake/neomake'
@@ -67,16 +63,21 @@ let g:neomake_go_gometalinter_maker = {
 
 
 
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 let g:go_def_mode = 'godef'
-let g:go_updatetime = 500
+let g:go_info_mode = 'gocode'
+let g:go_updatetime = 100
+let g:go_auto_type_info = 1
 "let g:go_fmt_fail_silently = 1
 let g:go_term_enabled = 1
-let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_enabled = ['vet', 'golint']
+set updatetime=100
+
 
 " Jump between errors on quickfix list
 map <C-n> :cnext<CR>
@@ -89,7 +90,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 set completeopt=longest,menuone " auto complete setting
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_delay = 100
+let g:deoplete#auto_complete_delay = 250
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns['default'] = '\h\w*'
