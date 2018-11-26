@@ -84,7 +84,7 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 " close the quickfix list
 nnoremap <leader>a :cclose<CR>
-
+nnoremap <leader>i :exe "GoDef"<CR>:exe "GoInstall"<CR><C-o>
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 set completeopt=longest,menuone " auto complete setting
@@ -109,6 +109,7 @@ au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
 au Filetype go nnoremap gb :exe "GoBuild"<CR>
+au Filetype go nnoremap gi :exe "GoInstall"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
