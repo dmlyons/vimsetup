@@ -269,5 +269,5 @@ augroup END " }
 hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
