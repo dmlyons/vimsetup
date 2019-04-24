@@ -12,6 +12,9 @@
 "BETTER:
 "curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+" this file belongs in ~/.config/nvim/init.vim
+" ln -s my.vimrc ~/.config/nvim/init.vim
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -23,6 +26,7 @@ set modelines=0
 call plug#begin('~/.vim/plugged')
 
 " Add or remove your Plugs here:
+let g:session_autosave = 'no'
 
 Plug 'tpope/vim-fugitive'
 
@@ -37,7 +41,7 @@ let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter', 'golint' ]
+let g:neomake_go_enabled_makers = [ 'go', 'golangci_lint', 'golint' ]
 let g:neomake_go_gometalinter_maker = {
   \ 'args': [
   \   '--tests',
@@ -67,16 +71,17 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
-let g:go_updatetime = 100
+"let g:go_updatetime = 800
 let g:go_auto_type_info = 1
 "let g:go_fmt_fail_silently = 1
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-let g:go_metalinter_enabled = ['vet', 'golint']
+"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+"let g:go_metalinter_enabled = ['vet', 'golint']
 set updatetime=100
+let g:go_metalinter_command='golangci-lint'
 
 
 " Jump between errors on quickfix list
