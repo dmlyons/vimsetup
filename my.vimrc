@@ -92,19 +92,21 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :exe "GoDef"<CR>:exe "GoInstall"<CR><C-o>
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-set completeopt=longest,menuone " auto complete setting
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_delay = 250
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns['default'] = '\h\w*'
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#align_class = 1
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"set completeopt=longest,menuone " auto complete setting
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_smart_case = 1
+"let g:deoplete#auto_complete_delay = 250
+"let g:deoplete#auto_complete_start_length = 1
+"let g:deoplete#keyword_patterns = {}
+"let g:deoplete#keyword_patterns['default'] = '\h\w*'
+"let g:deoplete#omni#input_patterns = {}
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"let g:deoplete#sources#go#align_class = 1
+"
+"Plug 'zchee/deoplete-go', { 'do': 'make' }
 
 
 Plug 'sebdah/vim-delve'
