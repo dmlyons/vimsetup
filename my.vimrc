@@ -37,40 +37,17 @@ Plug 'fatih/vim-hclfmt'
 " golang
 
 Plug 'neomake/neomake'
-autocmd BufWritePost * Neomake
+autocmd BufWritePost * Neomake!
 let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 let g:neomake_go_enabled_makers = [ 'go', 'golangci_lint', 'golint' ]
-let g:neomake_go_gometalinter_maker = {
-  \ 'args': [
-  \   '--tests',
-  \   '--enable-gc',
-  \   '--concurrency=3',
-  \   '--fast',
-  \   '-D', 'aligncheck',
-  \   '-D', 'dupl',
-  \   '-D', 'gocyclo',
-  \   '-D', 'gotype',
-  \   '-E', 'errcheck',
-  \   '-E', 'misspell',
-  \   '-E', 'unused',
-  \   '%:p:h',
-  \ ],
-  \ 'append_file': 0,
-  \ 'errorformat':
-  \   '%E%f:%l:%c:%trror: %m,' .
-  \   '%W%f:%l:%c:%tarning: %m,' .
-  \   '%E%f:%l::%trror: %m,' .
-  \   '%W%f:%l::%tarning: %m'
-  \ }
-
 
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
-let g:go_def_mode = 'godef'
+"let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
 "let g:go_updatetime = 800
 let g:go_auto_type_info = 1
@@ -79,8 +56,8 @@ let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
-"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-"let g:go_metalinter_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['vet', 'golint']
 set updatetime=100
 let g:go_metalinter_command='golangci-lint'
 
