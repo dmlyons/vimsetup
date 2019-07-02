@@ -36,28 +36,37 @@ Plug 'fatih/vim-hclfmt'
 
 " golang
 
-Plug 'neomake/neomake'
-autocmd BufWritePost * Neomake!
-let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-let g:neomake_go_enabled_makers = [ 'go', 'golangci_lint', 'golint' ]
-
+" ALE
+Plug 'w0rp/ale'
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {'go': ['golangci-lint', 'golint', 'goimports']}
+let g:ale_go_golangci_lint_options="--enable-all -D typecheck -D gochecknoinits -D gocyclo -D gochecknoglobals -D lll"
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 "let g:go_def_mode = 'godef'
-let g:go_info_mode = 'gocode'
+"let g:go_info_mode = 'gocode'
 "let g:go_updatetime = 800
-let g:go_auto_type_info = 1
+"let g:go_auto_type_info = 1
 "let g:go_fmt_fail_silently = 1
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
-let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_enabled = ['vet', 'golint']
+
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 set updatetime=100
 let g:go_metalinter_command='golangci-lint'
 
@@ -67,23 +76,9 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 " close the quickfix list
 nnoremap <leader>a :cclose<CR>
-nnoremap <leader>i :exe "GoDef"<CR>:exe "GoInstall"<CR><C-o>
+nnoremap <leader>i :exe "GoInfo"<CR>
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"set completeopt=longest,menuone " auto complete setting
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#enable_smart_case = 1
-"let g:deoplete#auto_complete_delay = 250
-"let g:deoplete#auto_complete_start_length = 1
-"let g:deoplete#keyword_patterns = {}
-"let g:deoplete#keyword_patterns['default'] = '\h\w*'
-"let g:deoplete#omni#input_patterns = {}
-"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-"let g:deoplete#sources#go#align_class = 1
-"
-"Plug 'zchee/deoplete-go', { 'do': 'make' }
 
 
 Plug 'sebdah/vim-delve'
@@ -193,6 +188,8 @@ set number
 
 " Highlite search
 set hlsearch
+
+set wrap
 
 augroup filetype
   au! BufRead,BufNewFile *.proto setfiletype proto
