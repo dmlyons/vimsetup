@@ -26,8 +26,11 @@ set modelines=0
 
 call plug#begin('~/.vim/plugged')
 
-" Add or remove your Plugs here:
 let g:session_autosave = 'no'
+
+" Add or remove your Plugs here:
+
+Plug 'SirVer/ultisnips'
 
 Plug 'tpope/vim-fugitive'
 
@@ -37,22 +40,27 @@ Plug 'fatih/vim-hclfmt'
 " golang
 
 " ALE
-Plug 'w0rp/ale'
-" Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
-let g:ale_linters = {'go': ['golangci-lint', 'golint', 'goimports']}
-let g:ale_go_golangci_lint_options="--enable-all -D typecheck -D gochecknoinits -D gocyclo -D gochecknoglobals -D lll"
+"Plug 'w0rp/ale'
+"let g:ale_linters = {
+"	\ 'go': ['gopls'],
+"	\}
+"" Error and warning signs.
+"let g:ale_sign_error = '⤫'
+"let g:ale_sign_warning = '⚠'
+"" Enable integration with airline.
+"let g:airline#extensions#ale#enabled = 1
+""let g:ale_linters = {'go': ['golangci-lint', 'golint', 'goreturns']}
+""let g:ale_go_golangci_lint_options="--enable-all -D typecheck -D gocritic -D gochecknoinits -D gocyclo -D gochecknoglobals -D lll"
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'goreturns'
 "let g:go_def_mode = 'godef'
 "let g:go_info_mode = 'gocode'
 "let g:go_updatetime = 800
 "let g:go_auto_type_info = 1
 "let g:go_fmt_fail_silently = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = "quickfix"
@@ -78,11 +86,13 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :exe "GoInfo"<CR>
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+" coc.nvim
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
 
-
+" vim-delve
 Plug 'sebdah/vim-delve'
-
 
 "autocmd BufWritePost *.go :GoBuild
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -182,6 +192,8 @@ let g:sessions_dir = '~/.vim/sessions'
 exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
 exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
+" maybe get 'hit enter to continue' to go away
+set cmdheight=2
 
 " I like line numbers
 set number
