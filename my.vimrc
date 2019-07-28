@@ -30,8 +30,6 @@ let g:session_autosave = 'no'
 
 " Add or remove your Plugs here:
 
-Plug 'SirVer/ultisnips'
-
 Plug 'tpope/vim-fugitive'
 
 " Terraform formatting (HCL)
