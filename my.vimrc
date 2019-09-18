@@ -32,31 +32,20 @@ let g:session_autosave = 'no'
 
 Plug 'tpope/vim-fugitive'
 
+"fzf
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
+nmap <Leader>g :GFiles<CR>
+nmap <Leader>G :Files<CR>
+
 " Terraform formatting (HCL)
 Plug 'fatih/vim-hclfmt'
 
 " golang
 
-" ALE
-"Plug 'w0rp/ale'
-"let g:ale_linters = {
-"	\ 'go': ['gopls'],
-"	\}
-"" Error and warning signs.
-"let g:ale_sign_error = '⤫'
-"let g:ale_sign_warning = '⚠'
-"" Enable integration with airline.
-"let g:airline#extensions#ale#enabled = 1
-""let g:ale_linters = {'go': ['golangci-lint', 'golint', 'goreturns']}
-""let g:ale_go_golangci_lint_options="--enable-all -D typecheck -D gocritic -D gochecknoinits -D gocyclo -D gochecknoglobals -D lll"
-
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goreturns'
-"let g:go_def_mode = 'godef'
-"let g:go_info_mode = 'gocode'
-"let g:go_updatetime = 800
-"let g:go_auto_type_info = 1
-"let g:go_fmt_fail_silently = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_term_enabled = 1
