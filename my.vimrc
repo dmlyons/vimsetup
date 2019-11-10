@@ -23,6 +23,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set modelines=0
 
+" EX mode can blow me
+nnoremap Q <nop>
 
 call plug#begin('~/.vim/plugged')
 
@@ -30,11 +32,13 @@ let g:session_autosave = 'no'
 
 " Add or remove your Plugs here:
 
+Plug 'godlygeek/tabular'
+
 Plug 'tpope/vim-fugitive'
 
 "fzf
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+"Plug '/usr/local/opt/fzf'
+"Plug 'junegunn/fzf.vim'
 
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>G :Files<CR>
@@ -44,15 +48,15 @@ Plug 'fatih/vim-hclfmt'
 
 " golang
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_fmt_command = 'goreturns'
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+let g:go_fmt_command = 'goimports'
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = "quickfix"
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_enabled = ['vet', 'golint']
+let g:go_metalinter_enabled = ['vet', 'ineffassign']
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -77,6 +81,16 @@ nnoremap <leader>i :exe "GoInfo"<CR>
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
+"
+"function! s:show_documentation()
+"  if (index(['vim','help'], &filetype) >= 0)
+"    execute 'h '.expand('<cword>')
+"  else
+"    call CocAction('doHover')
+"  endif
+"endfunction
+
 
 " vim-delve
 Plug 'sebdah/vim-delve'
@@ -93,6 +107,7 @@ au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 
 " airline
 Plug 'vim-airline/vim-airline'
+" let g:airline#extensions#tabline#enabled = 1
 
 " try majutsushi/tagbar
 Plug 'majutsushi/tagbar'
@@ -164,8 +179,8 @@ nnoremap <leader>F :NERDTreeClose<CR>
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " sessions
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-session'
 
 
 " All of your Plugs must be added before the following line
