@@ -2,7 +2,7 @@
 
 "Download plug.vim and put it in the "autoload" directory.
 
-:" ln -s ~/src/vimsetup/my.vimrc ~/.config/nvim/init.vim
+" ln -s ~/src/vimsetup/my.vimrc ~/.config/nvim/init.vim
 "Unix VIM
 
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -22,6 +22,7 @@ if !1 | finish | endif
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set modelines=0
+set hidden
 
 " EX mode can blow me
 nnoremap Q <nop>
@@ -36,16 +37,6 @@ Plug 'godlygeek/tabular'
 
 Plug 'tpope/vim-fugitive'
 
-"fzf
-"Plug '/usr/local/opt/fzf'
-"Plug 'junegunn/fzf.vim'
-
-nmap <Leader>g :GFiles<CR>
-nmap <Leader>G :Files<CR>
-
-" Terraform formatting (HCL)
-Plug 'fatih/vim-hclfmt'
-
 " golang
 
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
@@ -57,7 +48,8 @@ let g:go_auto_sameids = 1
 let g:go_list_type = "quickfix"
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_enabled = ['vet', 'ineffassign']
-
+" disable godef mapping, let LSP (coc.nvim) handle it
+let g:go_def_mapping_enabled = 0
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -66,7 +58,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-set updatetime=100
+"set updatetime=100
 let g:go_metalinter_command='golangci-lint'
 
 
@@ -81,15 +73,23 @@ nnoremap <leader>i :exe "GoInfo"<CR>
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-"
-"function! s:show_documentation()
-"  if (index(['vim','help'], &filetype) >= 0)
-"    execute 'h '.expand('<cword>')
-"  else
-"    call CocAction('doHover')
-"  endif
-"endfunction
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 
 " vim-delve
@@ -191,8 +191,9 @@ filetype plugin indent on    " required
 "
 
 let g:sessions_dir = '~/.vim/sessions'
-exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
-exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+nnoremap <Leader>ss :mks!<CR>
+"exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+"exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 " maybe get 'hit enter to continue' to go away
 set cmdheight=2
@@ -267,3 +268,6 @@ hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+" split a bit more naturally
+" set splitbelow
+set splitright
