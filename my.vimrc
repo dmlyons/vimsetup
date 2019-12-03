@@ -61,7 +61,6 @@ let g:go_highlight_types = 1
 "set updatetime=100
 let g:go_metalinter_command='golangci-lint'
 
-
 " Jump between errors on quickfix list
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -69,10 +68,27 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :exe "GoInfo"<CR>
 
+
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" <cr> to trigger completion
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)

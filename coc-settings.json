@@ -5,7 +5,9 @@
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"],
             "initializationOptions": {
-                "completeUnimported": true
+                "completeUnimported": true,
+                "staticcheck" : true,
+                "experimentalDisabledAnalyses" : ["ST1000", "ST1003"]
             }
         }
     }
