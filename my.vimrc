@@ -71,6 +71,7 @@ nnoremap <leader>i :exe "GoInfo"<CR>
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
 " Use tab for trigger completion with characters ahead and navigate.
