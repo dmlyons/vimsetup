@@ -7,7 +7,7 @@
             "initializationOptions": {
                 "completeUnimported": true,
                 "staticcheck" : true,
-                "experimentalDisabledAnalyses" : ["ST1000", "ST1003"]
+                "experimentalDisabledAnalyses" : ["ST1000", "ST1001", "ST1020", "ST1021" ]
             }
         }
     }
