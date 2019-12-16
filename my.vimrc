@@ -72,6 +72,7 @@ nnoremap <leader>i :exe "GoInfo"<CR>
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
+nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
 " Use tab for trigger completion with characters ahead and navigate.
@@ -208,8 +209,8 @@ filetype plugin indent on    " required
 "
 
 let g:sessions_dir = '~/.vim/sessions'
-nnoremap <Leader>ss :mks!<CR>
-"exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+"nnoremap <Leader>ss :mks!<CR>
+exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/Session.vim<CR>'
 "exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 " maybe get 'hit enter to continue' to go away
