@@ -46,7 +46,7 @@ let g:go_info_mode='gopls'
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_autosave_enabled = ['govet', 'golint', 'errcheck',  'structcheck', 'gosimple', 'ineffassign']
+let g:go_metalinter_autosave_enabled = ['govet', 'structcheck', 'gosimple', 'ineffassign']
 let g:go_metalinter_enabled = ['govet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
 "let g:go_metalinter_autosave = 1
 " disable godef mapping, let LSP (coc.nvim) handle it
