@@ -46,9 +46,9 @@ let g:go_info_mode='gopls'
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_autosave_enabled = ['govet', 'structcheck', 'gosimple', 'ineffassign']
+let g:go_metalinter_autosave_enabled = ['govet',  'gosimple', 'ineffassign']
 let g:go_metalinter_enabled = ['govet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
-"let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 1
 " disable godef mapping, let LSP (coc.nvim) handle it
 let g:go_def_mapping_enabled = 0
 let g:go_highlight_build_constraints = 1
@@ -60,8 +60,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_metalinter_command='golangci-lint'
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_deadline = "10s"
+let g:go_metalinter_deadline = "20s"
 "set updatetime=100
 
 " Jump between errors on quickfix list
@@ -211,10 +210,13 @@ filetype plugin indent on    " required
 "filetype plugin on
 "
 
+" session stuff
 let g:sessions_dir = '~/.vim/sessions'
-"nnoremap <Leader>ss :mks!<CR>
 exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/Session.vim<CR>'
-"exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+
+" spelling
+nnoremap <leader>sp :setlocal spell!<CR>
+
 
 " maybe get 'hit enter to continue' to go away
 set cmdheight=2
