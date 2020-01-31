@@ -43,6 +43,7 @@ Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_rename_command = 'gopls'
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
@@ -75,8 +76,8 @@ nnoremap <leader>i :exe "GoInfo"<CR>
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
-nmap <silent> <leader>E <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>e <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>E <Plug>(coc-diagnostic-next-error)
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
