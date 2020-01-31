@@ -71,7 +71,6 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :exe "GoInfo"<CR>
 
-
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
@@ -129,6 +128,7 @@ au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 " airline
 Plug 'vim-airline/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " try majutsushi/tagbar
 Plug 'majutsushi/tagbar'
