@@ -40,6 +40,7 @@ Plug 'tpope/vim-fugitive'
 " golang
 
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+" let g:go_debug=["lsp", "shell-commands"]
 let g:go_fmt_command = 'goimports'
 let g:go_rename_command = 'gopls'
 let g:go_term_enabled = 1
@@ -59,7 +60,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_metalinter_deadline = "20s"
-let g:go_doc_popup_window = 1
 
 " Jump between errors on quickfix list
 map <C-n> :cnext<CR>
@@ -70,7 +70,8 @@ nnoremap <leader>i :exe "GoInfo"<CR>
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
+let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json']
+" let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next-error)
@@ -88,7 +89,6 @@ function! s:check_back_space() abort
 endfunction
 " <cr> to trigger completion
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
 
 
 " Remap keys for gotos
