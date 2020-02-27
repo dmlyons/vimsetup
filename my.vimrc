@@ -2,19 +2,14 @@
 
 "Download plug.vim and put it in the "autoload" directory.
 
-" ln -s ~/src/vimsetup/my.vimrc ~/.config/nvim/init.vim
-"Unix VIM
-
+"UNIX VIM:
+" ln -s ~/src/vimsetup/my.vimrc ~/.vimrc
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
 "NEOVIM:
-"curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"
-"BETTER:
 "curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 " this file belongs in ~/.config/nvim/init.vim
-" ln -s my.vimrc ~/.config/nvim/init.vim
+" ln -s ~/src/vimsetup/my.vimrc ~/.config/nvim/init.vim
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
@@ -35,7 +30,10 @@ let g:session_autosave = 'no'
 
 Plug 'godlygeek/tabular'
 
+" git stuff
 Plug 'tpope/vim-fugitive'
+Plug 'APZelos/blamer.nvim'
+nnoremap <leader>b :BlamerToggle<CR>
 
 " golang
 
@@ -45,7 +43,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 let g:go_rename_command = 'gopls'
 let g:go_term_enabled = 1
-let g:go_auto_sameids = 1
+"let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
 let g:go_metalinter_autosave_enabled = ['vet',  'gosimple', 'ineffassign']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
@@ -67,7 +65,7 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 " close the quickfix list
 nnoremap <leader>a :cclose<CR>
-nnoremap <leader>i :exe "GoInfo"<CR>
+nnoremap <leader>i :exe "GoSameIds"<CR>
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
@@ -118,7 +116,6 @@ au FileType go nmap <Leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
 au Filetype go nnoremap gb :exe "GoBuild"<CR>
-au Filetype go nnoremap gi :exe "GoInstall"<CR>
 au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
@@ -181,7 +178,10 @@ let g:tagbar_type_php  = {
 
 " Javascript
 
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 
 " Tagbar and proto
 Plug 'tenfyzhong/tagbar-proto.vim'
