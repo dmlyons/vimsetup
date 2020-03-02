@@ -34,6 +34,8 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
 Plug 'APZelos/blamer.nvim'
 nnoremap <leader>b :BlamerToggle<CR>
+Plug 'airblade/vim-gitgutter'
+nnoremap <leader>gg :GitGutterToggle<CR>
 
 " golang
 
@@ -69,7 +71,7 @@ nnoremap <leader>i :exe "GoSameIds"<CR>
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json']
+let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json']
 " let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
