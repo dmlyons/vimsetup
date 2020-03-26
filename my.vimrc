@@ -30,6 +30,11 @@ let g:session_autosave = 'no'
 
 Plug 'godlygeek/tabular'
 
+" If installed using Homebrew
+set rtp+=/usr/local/opt/fzf
+Plug '/usr/local/opt/fzf'
+
+
 " git stuff
 Plug 'tpope/vim-fugitive'
 Plug 'APZelos/blamer.nvim'
