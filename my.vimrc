@@ -117,7 +117,7 @@ endfunction
 Plug 'sebdah/vim-delve'
 
 "autocmd BufWritePost *.go :GoBuild
-au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
 au Filetype go nnoremap gb :exe "GoBuild"<CR>
@@ -216,7 +216,7 @@ filetype plugin indent on    " required
 
 " session stuff
 let g:sessions_dir = '~/.vim/sessions'
-exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/Session.vim<CR>'
+exec 'nnoremap <leader>ss :mks! ' . g:sessions_dir . '/Session.vim<CR>'
 
 " spelling
 nnoremap <leader>sp :setlocal spell!<CR>
