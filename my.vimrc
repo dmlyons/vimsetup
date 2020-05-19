@@ -217,6 +217,7 @@ filetype plugin indent on    " required
 " session stuff
 let g:sessions_dir = '~/.vim/sessions'
 exec 'nnoremap <leader>ss :mks! ' . g:sessions_dir . '/Session.vim<CR>'
+exec 'nnoremap <leader>sr :source ' . g:sessions_dir . '/Session.vim<CR>'
 
 " spelling
 nnoremap <leader>sp :setlocal spell!<CR>
