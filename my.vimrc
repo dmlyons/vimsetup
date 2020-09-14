@@ -73,7 +73,8 @@ nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :exe "GoSameIds"<CR>
 
 " coc.nvim
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json']
 " let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
@@ -274,7 +275,7 @@ set mouse=a
 syntax enable
 set termguicolors
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 set smartcase
 " make backspace sane
 set backspace=indent,eol,start
