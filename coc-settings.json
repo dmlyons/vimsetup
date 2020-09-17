@@ -7,28 +7,11 @@
             "filetypes": ["go"],
             "initializationOptions": {
                 "completeUnimported": true,
-                "staticcheck" : true,
-                "analyses" : ["ST1000", "ST1001", "ST1020", "ST1021" ]
-            }
-        },
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                },
-                "clang": {
-                    // make sure you have installed commandLineTools
-                    "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
-                    "extraArgs": [
-                        "-isystem",
-                        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-                        "-I",
-                        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"        
-                    ]
+                //"staticcheck" : true,
+                "analyses" : {
+                //   "unusedparams": true  // Enable the unusedparams analyzer.
                 }
+                // ["ST1000", "ST1001", "ST1020", "ST1021" ]
             }
         }
     }

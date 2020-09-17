@@ -50,7 +50,7 @@ let g:go_rename_command = 'gopls'
 let g:go_term_enabled = 1
 "let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_autosave_enabled = ['vet',  'gosimple', 'ineffassign']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint',  'gosimple', 'ineffassign']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
 "let g:go_metalinter_autosave = 1
 " disable godef mapping, let LSP (coc.nvim) handle it
