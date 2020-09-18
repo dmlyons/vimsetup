@@ -50,8 +50,8 @@ let g:go_rename_command = 'gopls'
 let g:go_term_enabled = 1
 "let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_autosave_enabled = ['vet', 'golint',  'gosimple', 'ineffassign']
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
+"let g:go_metalinter_autosave_enabled = ['vet', 'gosimple', 'ineffassign']
+"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
 "let g:go_metalinter_autosave = 1
 " disable godef mapping, let LSP (coc.nvim) handle it
 let g:go_def_mapping_enabled = 0
@@ -75,7 +75,7 @@ nnoremap <leader>i :exe "GoSameIds"<CR>
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json']
+let g:coc_global_extensions = ['coc-html',  'coc-yaml', 'coc-json']
 " let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
