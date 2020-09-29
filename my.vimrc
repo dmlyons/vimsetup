@@ -45,7 +45,6 @@ Plug 'airblade/vim-gitgutter'
 nnoremap <leader>gg :GitGutterToggle<CR>
 
 " golang
-
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 " let g:go_debug=["lsp", "shell-commands"]
@@ -79,7 +78,10 @@ nnoremap <leader>i :exe "GoSameIds"<CR>
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-html',  'coc-yaml', 'coc-json']
+let g:coc_global_extensions = ['coc-html',  'coc-yaml', 'coc-json', 'coc-snippets']
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+command EditSnips CocCommand snippets.editSnippets
 " let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
