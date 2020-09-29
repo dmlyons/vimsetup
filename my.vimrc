@@ -27,7 +27,11 @@ call plug#begin('~/.vim/plugged')
 let g:session_autosave = 'no'
 
 " Add or remove your Plugs here:
+"
+" vim polyglot
+Plug 'sheerun/vim-polyglot'
 
+" tabular
 Plug 'godlygeek/tabular'
 
 " If installed using Homebrew
@@ -113,10 +117,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-
-" vim-delve
-Plug 'sebdah/vim-delve'
-
 "autocmd BufWritePost *.go :GoBuild
 au FileType go nmap <leader>s <Plug>(go-implements)
 au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
@@ -182,13 +182,6 @@ let g:tagbar_type_php  = {
   \ ]
 \ }
 
-" Javascript
-
-"Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
-
 " Tagbar and proto
 Plug 'tenfyzhong/tagbar-proto.vim'
 
@@ -222,7 +215,6 @@ exec 'nnoremap <leader>sr :source ' . g:sessions_dir . '/Session.vim<CR>'
 
 " spelling
 nnoremap <leader>sp :setlocal spell!<CR>
-
 
 " maybe get 'hit enter to continue' to go away
 set cmdheight=2
