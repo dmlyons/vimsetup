@@ -78,7 +78,7 @@ nnoremap <leader>i :exe "GoSameIds"<CR>
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-html',  'coc-yaml', 'coc-json', 'coc-snippets']
+let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json', 'coc-snippets']
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 command EditSnips CocCommand snippets.editSnippets
