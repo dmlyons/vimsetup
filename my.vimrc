@@ -31,9 +31,6 @@ let g:session_autosave = 'no'
 " vim polyglot
 Plug 'sheerun/vim-polyglot'
 
-" tabular
-Plug 'godlygeek/tabular'
-
 " If installed using Homebrew
 Plug 'junegunn/fzf'
 
@@ -44,148 +41,10 @@ nnoremap <leader>b :BlamerToggle<CR>
 Plug 'airblade/vim-gitgutter'
 nnoremap <leader>gg :GitGutterToggle<CR>
 
-" golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
-" let g:go_debug=["lsp", "shell-commands"]
-let g:go_fmt_command = 'goimports'
-let g:go_rename_command = 'gopls'
-let g:go_term_enabled = 1
-"let g:go_auto_sameids = 1
-let g:go_list_type = 'quickfix'
-"let g:go_metalinter_autosave_enabled = ['vet', 'gosimple', 'ineffassign']
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
-"let g:go_metalinter_autosave = 1
-" disable godef mapping, let LSP (coc.nvim) handle it
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-" let g:go_metalinter_deadline = "20s"
-
-" Jump between errors on quickfix list
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-" close the quickfix list
-nnoremap <leader>a :cclose<CR>
-nnoremap <leader>i :exe "GoSameIds"<CR>
-
-" coc.nvim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json', 'coc-snippets']
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-command EditSnips CocCommand snippets.editSnippets
-" let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
-nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
-nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>E <Plug>(coc-diagnostic-next-error)
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-" <cr> to trigger completion
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-"autocmd BufWritePost *.go :GoBuild
-au FileType go nmap <leader>s <Plug>(go-implements)
-au Filetype go nnoremap <leader>gd :split <CR>:exe "GoDef"<CR>
-au Filetype go nnoremap <leader>gD :exe "GoDef"<CR>
-au Filetype go nnoremap gb :exe "GoBuild"<CR>
-au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
-au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
-au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
-
 " airline
 Plug 'vim-airline/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" try majutsushi/tagbar
-Plug 'majutsushi/tagbar'
-nnoremap <leader>t :TagbarToggle<CR>
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
-let g:tagbar_type_php  = {
-  \ 'ctagstype' : 'php',
-  \ 'kinds'     : [
-      \ 'i:interfaces',
-      \ 'c:classes',
-      \ 'd:constant definitions',
-      \ 'f:functions',
-      \ 'j:javascript functions:1'
-  \ ]
-\ }
-
-" Tagbar and proto
-Plug 'tenfyzhong/tagbar-proto.vim'
 
 " file sidebar
 Plug 'scrooloose/nerdtree'
@@ -197,11 +56,6 @@ nnoremap <leader>F :NERDTreeClose<CR>
 
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" sessions
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
-
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -294,12 +148,3 @@ hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 " split a bit more naturally
 " set splitbelow
 set splitright
-
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
-
