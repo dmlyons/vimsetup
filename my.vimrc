@@ -34,7 +34,8 @@ Plug 'tpope/vim-fugitive'
 " Terraform formatting (HCL)
 Plug 'fatih/vim-hclfmt'
 
-" golang
+"fzf
+Plug 'junegunn/fzf'
 
 " ALE
 Plug 'w0rp/ale'
@@ -46,6 +47,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {'go': ['golangci-lint', 'golint', 'goimports']}
 let g:ale_go_golangci_lint_options="--enable-all -D typecheck -D gochecknoinits -D gocyclo -D gochecknoglobals -D lll"
 
+
+" vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 "let g:go_def_mode = 'godef'
@@ -78,8 +81,21 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :exe "GoInfo"<CR>
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 Plug 'sebdah/vim-delve'
 
@@ -148,10 +164,6 @@ let g:tagbar_type_php  = {
   \ ]
 \ }
 
-" Javascript
-
-Plug 'pangloss/vim-javascript'
-
 " Tagbar and proto
 Plug 'tenfyzhong/tagbar-proto.vim'
 
@@ -170,6 +182,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
+" vim polyglot
+Plug 'sheerun/vim-polyglot'
+ 
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -238,9 +253,6 @@ set backspace=indent,eol,start
 
 " check to see if the file has been updated more often
 au CursorHold * checktime
-
-" increase timeout on install for YCM
-let g:neobundle#install_process_timeout = 1500
 
 " autoreload vimrc
 augroup reload_vimrc " {
