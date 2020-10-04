@@ -7,9 +7,11 @@
             "filetypes": ["go"],
             "initializationOptions": {
                 "completeUnimported": true,
-                //"staticcheck" : true,
+                "staticcheck" : true,
                 "analyses" : {
-                //   "unusedparams": true  // Enable the unusedparams analyzer.
+                    "ST1020":true,
+                    "ST1021":true,
+                    "ST1022":true
                 }
                 // ["ST1000", "ST1001", "ST1020", "ST1021" ]
             }

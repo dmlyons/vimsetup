@@ -51,12 +51,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = 'goimports'
 let g:go_rename_command = 'gopls'
 let g:go_term_enabled = 1
-"let g:go_auto_sameids = 1
 let g:go_list_type = 'quickfix'
 "let g:go_metalinter_autosave_enabled = ['vet', 'gosimple', 'ineffassign']
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck', 'gosimple', 'ineffassign']
 "let g:go_metalinter_autosave = 1
-" disable godef mapping, let LSP (coc.nvim) handle it
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -84,8 +82,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json', 'coc-snippets']
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
-command EditSnips CocCommand snippets.editSnippets
-" let g:coc_global_extensions = ['coc-git', 'coc-html', 'coc-tsserver', 'coc-python', 'coc-yaml', 'coc-json']
+command! EditSnips CocCommand snippets.editSnippets
 nmap <silent> <leader>c :call clearmatches()<CR>:call nvim_buf_clear_namespace(bufnr('%'), -1, 0, -1)<CR>
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>E <Plug>(coc-diagnostic-next-error)
@@ -321,3 +318,7 @@ if executable(s:clip)
     augroup END
 endif
 
+" fix cursor on vim
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
