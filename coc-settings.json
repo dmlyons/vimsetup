@@ -1,4 +1,14 @@
 {
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "coc.preferences.formatOnType": true,
+    "tsserver.formatOnType": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "signature.preferShownAbove": false,
     "languageserver": {
         "golang": {
@@ -13,7 +23,6 @@
                     "ST1021":true,
                     "ST1022":true
                 }
-                // ["ST1000", "ST1001", "ST1020", "ST1021" ]
             }
         }
     }

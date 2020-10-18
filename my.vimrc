@@ -80,6 +80,14 @@ nnoremap <leader>i :exe "GoSameIds"<CR>
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json', 'coc-snippets']
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 command! EditSnips CocCommand snippets.editSnippets
@@ -213,11 +221,6 @@ nnoremap <leader>F :NERDTreeClose<CR>
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" sessions
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
-
-
 " All of your Plugs must be added before the following line
 call plug#end()
 filetype plugin indent on    " required
@@ -271,6 +274,7 @@ set laststatus=2
 
 " colorscheme
 colorscheme torte
+" colorscheme peachpuff
 
 " highlight the current column and line of the cursor
 "set cursorcolumn
