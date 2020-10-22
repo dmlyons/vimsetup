@@ -28,6 +28,7 @@ let g:session_autosave = 'no'
 
 " Add or remove your Plugs here:
 "
+
 " vim polyglot
 Plug 'sheerun/vim-polyglot'
 
@@ -273,7 +274,7 @@ set directory=~/.vim/backup,.,/tmp
 set laststatus=2
 
 " colorscheme
-colorscheme torte
+colorscheme koehler
 " colorscheme peachpuff
 
 " highlight the current column and line of the cursor
