@@ -36,7 +36,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
 
 " If installed using Homebrew
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " git stuff
 Plug 'tpope/vim-fugitive'
