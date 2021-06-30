@@ -21,7 +21,9 @@
                 "analyses" : {
                     "ST1020":true,
                     "ST1021":true,
-                    "ST1022":true
+                    "ST1022":true,
+                    "S1025":true,
+                    "ST1023":true
                 }
             }
         }
