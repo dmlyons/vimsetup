@@ -42,6 +42,7 @@ Plug 'junegunn/fzf.vim'
 " git stuff
 Plug 'tpope/vim-fugitive'
 Plug 'APZelos/blamer.nvim'
+let g:blamer_enabled = 1
 nnoremap <leader>b :BlamerToggle<CR>
 Plug 'airblade/vim-gitgutter'
 nnoremap <leader>gg :GitGutterToggle<CR>
