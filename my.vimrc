@@ -43,6 +43,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'APZelos/blamer.nvim'
 let g:blamer_enabled = 1
+let g:blamer_date_format = '%m/%d/%y'
 nnoremap <leader>b :BlamerToggle<CR>
 Plug 'airblade/vim-gitgutter'
 nnoremap <leader>gg :GitGutterToggle<CR>
