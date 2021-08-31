@@ -40,7 +40,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " git stuff
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', {'tag': '*'}
+
 Plug 'APZelos/blamer.nvim'
 let g:blamer_enabled = 1
 let g:blamer_date_format = '%m/%d/%y'
