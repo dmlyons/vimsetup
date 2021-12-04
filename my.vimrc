@@ -10,6 +10,7 @@
 "curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " this file belongs in ~/.config/nvim/init.vim
 " ln -s ~/src/vimsetup/my.vimrc ~/.config/nvim/init.vim
+" ln -s ~/src/vimsetup/coc-settings.json ~/.config/nvim/coc-settings.json
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
