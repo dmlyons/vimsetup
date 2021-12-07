@@ -38,7 +38,7 @@ let g:airline_powerline_fonts = 1
 " tabular
 Plug 'godlygeek/tabular'
 
-" If installed using Homebrew
+" FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -48,6 +48,10 @@ Plug 'tpope/vim-fugitive', {'tag': '*'}
 Plug 'APZelos/blamer.nvim'
 let g:blamer_enabled = 1
 let g:blamer_date_format = '%m/%d/%y'
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_show_in_insert_modes = 0
+let g:blamer_prefix = ' > '
+
 nnoremap <leader>b :BlamerToggle<CR>
 Plug 'airblade/vim-gitgutter'
 nnoremap <leader>gg :GitGutterToggle<CR>
