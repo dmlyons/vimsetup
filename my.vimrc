@@ -28,7 +28,9 @@ call plug#begin('~/.vim/plugged')
 let g:session_autosave = 'no'
 
 " Add or remove your Plugs here:
-"
+
+" copilot
+Plug 'github/copilot.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -256,6 +258,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+" tabstop is 2 for markdown
+autocmd Filetype markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop is 2 for proto
 autocmd Filetype proto setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " tabstop is 2 for yaml
@@ -314,6 +318,7 @@ hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 " set splitbelow
 set splitright
 
+" wsl2 fix for clipboard
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
     augroup WSLYank
@@ -322,7 +327,11 @@ if executable(s:clip)
     augroup END
 endif
 
-" fix cursor on vim
+" fix cursor on vim ?FIXME WHY IS THIS HERE?
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
+
+" moving text around:
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+vnoremap <C-Down> :m '>+1<CR>gv=gv
