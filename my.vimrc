@@ -34,8 +34,11 @@ Plug 'github/copilot.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
-" let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+" remove the  part
+let g:airline_section_b=''
+" remove separators for empty sections
+"let g:airline_skip_empty_sections = 1
 
 " tabular
 Plug 'godlygeek/tabular'
@@ -124,18 +127,8 @@ au Filetype go nnoremap <leader>gc :exe "GoCoverage"<CR>
 au Filetype go nnoremap <leader>gt :exe "GoTest"<CR>
 au Filetype go nnoremap <leader>gi :exe "GoImplements"<CR>
 
-" " golang
+" golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" "Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
-" " let g:go_debug=["lsp", "shell-commands"]
-" let g:go_fmt_command = 'goimports'
-" let g:go_rename_command = 'gopls'
-" let g:go_term_enabled = 1
-" let g:go_list_type = 'quickfix'
- 
-" let g:go_def_mode='gopls'
-" let g:go_info_mode='gopls'
- 
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
