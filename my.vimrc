@@ -30,7 +30,7 @@ let g:session_autosave = 'no'
 " Add or remove your Plugs here:
 
 " copilot
-Plug 'github/copilot.vim'
+":Plug 'github/copilot.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
