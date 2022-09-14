@@ -266,9 +266,14 @@ set directory=~/.vim/backup,.,/tmp
 " always show the status line
 set laststatus=2
 
-" colorscheme
-colorscheme koehler
-" colorscheme peachpuff
+set mouse=a
+" colorscheme and Highlite
+syntax enable
+set termguicolors
+
+colorscheme molokai
+highlight Normal guibg=black guifg=white
+
 
 " highlight the current column and line of the cursor
 "set cursorcolumn
@@ -277,10 +282,6 @@ colorscheme koehler
 " persistant undo
 set undofile
 set undodir=~/.vim/undo
-
-set mouse=a
-syntax enable
-set termguicolors
 
 set clipboard=unnamedplus
 set smartcase
