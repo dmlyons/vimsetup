@@ -7,7 +7,6 @@
     ],
     "coc.preferences.formatOnType": true,
     "diagnostic.signPriority": 9999999,
-    "diagnostic.highlightOffset": 9999999,
     "diagnostic.enableMessage": "jump",
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,

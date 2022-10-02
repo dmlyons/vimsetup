@@ -271,8 +271,8 @@ set mouse=a
 syntax enable
 set termguicolors
 
-colorscheme molokai
-highlight Normal guibg=black guifg=white
+" colorscheme molokai
+" highlight Normal guibg=black guifg=white
 
 
 " highlight the current column and line of the cursor
@@ -300,7 +300,7 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
+" hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
 
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
