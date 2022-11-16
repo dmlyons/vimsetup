@@ -47,6 +47,11 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" check if we are in mac os homebrew
+if isdirectory('/usr/local/opt/fzf')
+  set rtp+=/usr/local/opt/fzf
+endif
+
 " git stuff
 Plug 'tpope/vim-fugitive', {'tag': '*'}
 
