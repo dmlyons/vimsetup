@@ -218,6 +218,8 @@ nnoremap <leader>F :NERDTreeClose<CR>
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+Plug 'nanotech/jellybeans.vim'
+
 " All of your Plugs must be added before the following line
 call plug#end()
 filetype plugin indent on    " required
@@ -276,9 +278,11 @@ set mouse=a
 syntax enable
 set termguicolors
 
-" colorscheme molokai
+colorscheme jellybeans
 " highlight Normal guibg=black guifg=white
 
+" autoresize splits when vim is resized
+autocmd VimResized * wincmd =
 
 " highlight the current column and line of the cursor
 "set cursorcolumn
