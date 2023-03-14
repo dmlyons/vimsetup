@@ -32,6 +32,9 @@ let g:session_autosave = 'no'
 " copilot
 ":Plug 'github/copilot.vim'
 
+" MRU
+Plug 'yegappan/mru'
+
 " airline
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -218,7 +221,7 @@ nnoremap <leader>F :NERDTreeClose<CR>
 " git cool stuff in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'nanotech/jellybeans.vim'
+" Plug 'nanotech/jellybeans.vim'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -278,11 +281,12 @@ set mouse=a
 syntax enable
 set termguicolors
 
-colorscheme jellybeans
+colorscheme koehler
 " highlight Normal guibg=black guifg=white
 
 " autoresize splits when vim is resized
 autocmd VimResized * wincmd =
+set equalalways
 
 " highlight the current column and line of the cursor
 "set cursorcolumn
