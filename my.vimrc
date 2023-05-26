@@ -29,8 +29,16 @@ let g:session_autosave = 'no'
 
 " Add or remove your Plugs here:
 
-" copilot
-":Plug 'github/copilot.vim'
+" lua stuffs
+lua <<EOF
+----------------------------------------------------------------------
+
+local Plug = vim.fn['plug#']
+-- which key
+Plug 'folke/which-key.nvim'
+
+----------------------------------------------------------------------
+EOF
 
 " MRU
 Plug 'yegappan/mru'
@@ -75,10 +83,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-yaml', 'coc-json', 'coc-snippets']
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
-endif
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
 endif
 
 " Use <C-l> for trigger snippet expand.
