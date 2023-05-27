@@ -85,6 +85,10 @@ lsp_manager.setup("gopls", {
       usePlaceholders = true,
       gofumpt = true,
       codelenses = {
+        unusedparams = true,
+        useany = true,
+        unusedwrite = true,
+        unusedvariable = true,
         generate = false,
         gc_details = true,
         test = true,
