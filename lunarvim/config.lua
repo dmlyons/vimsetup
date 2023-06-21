@@ -19,6 +19,8 @@ lvim.builtin.treesitter.ensure_installed = {
 -- Plugins
 ------------------------
 lvim.plugins = {
+  "fatih/vim-go",
+  "rmagatti/auto-session",
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
 }
@@ -112,3 +114,29 @@ gopher.setup {
     iferr = "iferr",
   },
 }
+
+-- auto-session setup
+require("auto-session").setup {
+  log_level = "error",
+
+  cwd_change_handling = {
+    restore_upcoming_session = true, -- already the default, no need to specify like this, only here as an example
+    pre_cwd_changed_hook = nil, -- already the default, no need to specify like this, only here as an example
+    post_cwd_changed_hook = function() -- example refreshing the lualine status line _after_ the cwd changes
+      require("lualine").refresh() -- refresh lualine so the new session name is displayed in the status bar
+    end,
+  },
+}
+
+
+-- lvim.lang.go.formatter.exe = "goimports"
+lvim.format_on_save = true
+lvim.lint_on_save = true
+
+vim.opt.wrap = true
+-- local a = vim.cmd
+-- 
+-- a.nvim_create_autocmd( { "BufWritePre" }, {
+--   pattern = { "*.go" },
+--   command = [[ !goimports % ]],
+-- })
