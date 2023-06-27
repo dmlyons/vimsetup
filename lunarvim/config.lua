@@ -19,10 +19,63 @@ lvim.builtin.treesitter.ensure_installed = {
 -- Plugins
 ------------------------
 lvim.plugins = {
-  "fatih/vim-go",
-  "rmagatti/auto-session",
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    lazy = true,
+    config = function()
+      require("persistence").setup {
+        dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+        options = { "buffers", "curdir", "tabpages", "winsize" },
+      }
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Git",
+      "Gdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
+    },
+    ft = {"fugitive"}
+  },
+  {
+    "fatih/vim-go",
+    config = function ()
+      -- we disable most of these features because treesitter and nvim-lsp
+      -- take care of it
+      vim.g['go_gopls_enabled'] = 0
+      vim.g['go_code_completion_enabled'] = 0
+      vim.g['go_fmt_autosave'] = 0
+      vim.g['go_imports_autosave'] = 0
+      vim.g['go_mod_fmt_autosave'] = 0
+      vim.g['go_doc_keywordprg_enabled'] = 0
+      vim.g['go_def_mapping_enabled'] = 0
+      vim.g['go_textobj_enabled'] = 0
+      vim.g['go_list_type'] = 'quickfix'
+    end,
+  },
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
+}
+
+-- session management
+
+lvim.builtin.which_key.mappings["S"]= {
+  name = "Session",
+  c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+  l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+  Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
 ------------------------
@@ -115,28 +168,7 @@ gopher.setup {
   },
 }
 
--- auto-session setup
-require("auto-session").setup {
-  log_level = "error",
-
-  cwd_change_handling = {
-    restore_upcoming_session = true, -- already the default, no need to specify like this, only here as an example
-    pre_cwd_changed_hook = nil, -- already the default, no need to specify like this, only here as an example
-    post_cwd_changed_hook = function() -- example refreshing the lualine status line _after_ the cwd changes
-      require("lualine").refresh() -- refresh lualine so the new session name is displayed in the status bar
-    end,
-  },
-}
-
-
--- lvim.lang.go.formatter.exe = "goimports"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 
 vim.opt.wrap = true
--- local a = vim.cmd
--- 
--- a.nvim_create_autocmd( { "BufWritePre" }, {
---   pattern = { "*.go" },
---   command = [[ !goimports % ]],
--- })
