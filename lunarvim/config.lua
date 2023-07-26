@@ -47,14 +47,14 @@ lvim.plugins = {
       "Glgrep",
       "Gedit"
     },
-    ft = {"fugitive"}
+    ft = { "fugitive" }
   },
   {
     "fatih/vim-go",
-    config = function ()
+    config = function()
       -- we disable most of these features because treesitter and nvim-lsp
       -- take care of it
-      vim.g['go_gopls_enabled'] = 0
+      --      vim.g['go_gopls_enabled'] = 0
       vim.g['go_code_completion_enabled'] = 0
       vim.g['go_fmt_autosave'] = 0
       vim.g['go_imports_autosave'] = 0
@@ -67,11 +67,17 @@ lvim.plugins = {
   },
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
+  {
+    "preservim/tagbar",
+    config = function()
+      vim.keymap.set("n", "<leader>t","<cmd>TagbarToggle<Cr>") 
+    end
+  },
 }
 
 -- session management
 
-lvim.builtin.which_key.mappings["S"]= {
+lvim.builtin.which_key.mappings["S"] = {
   name = "Session",
   c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
   l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
@@ -84,7 +90,7 @@ lvim.builtin.which_key.mappings["S"]= {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "goimports", filetypes = { "go" } },
-  { command = "gofumpt", filetypes = { "go" } },
+  { command = "gofumpt",   filetypes = { "go" } },
 }
 
 lvim.format_on_save = {
@@ -167,6 +173,8 @@ gopher.setup {
     iferr = "iferr",
   },
 }
+
+vim.opt.clipboard = 'unnamedplus'
 
 lvim.format_on_save = true
 lvim.lint_on_save = true
