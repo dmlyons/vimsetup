@@ -73,6 +73,8 @@ lvim.plugins = {
       vim.keymap.set("n", "<leader>t","<cmd>TagbarToggle<Cr>") 
     end
   },
+  "LunarVim/darkplus.nvim",
+  {"dasupradyumna/midnight.nvim", lazy = false, priority = 1000},
 }
 
 -- session management
@@ -174,6 +176,8 @@ gopher.setup {
   },
 }
 
+-- lvim.colorscheme="darkplus"
+lvim.colorscheme="midnight"
 vim.opt.clipboard = 'unnamedplus'
 
 lvim.format_on_save = true
