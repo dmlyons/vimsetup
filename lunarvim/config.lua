@@ -3,6 +3,8 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
+-- My Notes
+-- on fedora KDE (pretty sure it is a wayland thing) install wl-clipboard
 
 
 -- From https://github.com/LunarVim/starter.lvim/tree/go-ide
