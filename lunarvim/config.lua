@@ -22,6 +22,18 @@ lvim.builtin.treesitter.ensure_installed = {
 ------------------------
 lvim.plugins = {
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     lazy = true,
@@ -79,6 +91,32 @@ lvim.plugins = {
   {"dasupradyumna/midnight.nvim", lazy = false, priority = 1000},
 }
 
+-- COPILOT --
+local ok, copilot = pcall(require, "copilot")
+if not ok then
+  return
+end
+
+copilot.setup {
+  suggestion = {
+    keymap = {
+      accept = "<c-l>",
+      next = "<c-j>",
+      prev = "<c-k>",
+      dismiss = "<c-h>",
+    },
+  },
+}
+
+-- require("copilot").setup({
+--   suggestion = { enabled = false },
+--   panel = { enabled = false },
+-- })
+
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
+
+
 -- session management
 
 lvim.builtin.which_key.mappings["S"] = {
@@ -94,7 +132,7 @@ lvim.builtin.which_key.mappings["S"] = {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "goimports", filetypes = { "go" } },
-  { command = "gofumpt",   filetypes = { "go" } },
+  { command = "gofmt",   filetypes = { "go" } },
 }
 
 lvim.format_on_save = {
@@ -158,6 +196,8 @@ lsp_manager.setup("gopls", {
         gc_details = true,
         test = true,
         tidy = true,
+        -- experiments:
+        fieldalignment = true,
       },
     },
   },
